@@ -1,25 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'; 
+import {Router, RouteComponentProps, Link} from '@reach/router';
+import {grommet, Grommet, Box} from 'grommet';
+import Home from './components/home/Home'
+import YesNoQuestion from './components/question/Question';
+
+const AppBar = (props: any) => (
+  <Box
+    tag='header'
+    direction='row'
+    align='center'
+    justify='between'
+    background='brand'
+    pad={{ left: 'medium', right: 'small', vertical: 'small' }}
+    elevation='medium'
+    style={{ zIndex: '1' }}
+    {...props}
+    />
+)
+
+const NewPatient = (props: RouteComponentProps) => <div><YesNoQuestion text="What is your __name__?"/></div>
+const ListPatients = (props: RouteComponentProps) => <div>List Patients</div>
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Grommet theme={grommet}>
+      <AppBar>A-WPTAS</AppBar>
+      <Router>
+        <Home path="/" />
+        <NewPatient path="/newpatient" />
+        <ListPatients path="/listpatients" />
+      </Router>
+      <Link to="/">Home</Link>
+    </Grommet>
   );
 }
 
