@@ -2,7 +2,7 @@ import React from 'react';
 import {Router, RouteComponentProps, Link} from '@reach/router';
 import {grommet, Grommet, Box} from 'grommet';
 import Home from './components/home/Home'
-import YesNoQuestion from './components/question/Question';
+import Questions from './components/question/Question';
 
 const AppBar = (props: any) => (
   <Box
@@ -18,7 +18,7 @@ const AppBar = (props: any) => (
     />
 )
 
-const NewPatient = (props: RouteComponentProps) => <div><YesNoQuestion text="What is your __name__?"/></div>
+const NewPatient = (props: RouteComponentProps) => <Questions />
 const ListPatients = (props: RouteComponentProps) => <div>List Patients</div>
 
 function App() {

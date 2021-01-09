@@ -1,70 +1,68 @@
 import React, { useState } from 'react';
+import { Markdown, Box, Button, grommet, Grommet} from 'grommet';
+import BinaryChoice from '../binaryChoice/BinaryChoice';
 
-import { Box, Grommet, Markdown, RadioButtonGroup } from 'grommet';
-import { grommet } from 'grommet/themes';
-import { deepMerge } from 'grommet/utils';
+const YesNoQuestion = ({text, answer, next, prev, value}: any) => {
 
-const customTheme = deepMerge(grommet, {
-  radioButtonGroup: {
-    container: {
-      gap: 'xlarge',
-    },
-  },
-  radioButton: {
-    border: {
-      color: 'red',
-      width: '10px',
-    },
-    hover: {
-      border: {
-        color: 'blue',
-      },
-      background: {
-        color: 'accent-4',
-      },
-    },
-    size: '100px', // affects the size of the outer circle
-    icon: {
-      size: '80px', // affects the size of the inner circle
-    },
-    check: {
-      radius: '20%',
-    },
-  },
-});
-
-
-
-const YesNoQuestion = ({text}: any) => {
-  const [value, setValue] = useState('');
-
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-      if (event.target.value) {
-          setValue(event.target.value);
-          console.log(event.target.value);
-      } else {
-          console.log("No value", event.currentTarget)
-      }
+  const onChange = (v: string) => {
+    answer(v);
   }
 
   return (
-    <Grommet theme={customTheme}>
-      <Box align="center" pad="large">
-
+    <Grommet theme={grommet}>
+      <Box>
         <Markdown>{text}</Markdown>
-
-        <RadioButtonGroup
-          name="radio"
-          options={[
-            { label: 'Yes', value: 'yes' },
-            { label: 'No', value: 'no' },
-          ]}
-          value={value}
-          onChange={onChange}
-        />
+        <BinaryChoice callback={onChange} value={value} />
+        <Box 
+          direction="row" 
+          pad="large"
+          gap="large"
+          align="stretch"
+          justify="stretch"
+          >
+          <Button label="Prev"  onClick={prev}/>
+          <Button label="Next"  onClick={next}/>
+        </Box>
       </Box>
-    </Grommet>
+      </Grommet>
   );
 };
 
-export default YesNoQuestion;
+const Questions = () => {
+
+  const questions = [ 
+    "What is your name?", 
+    "What is the name of this place?", 
+    "Why are you here?", 
+    "What is the month?", 
+    "What is the year?"
+    ]
+
+  const [response, setResponse]= useState(new Array(questions.length))
+
+  const [question, setQuestion] = useState(0)
+
+  const next = () => {
+    if (question + 1 < questions.length) {
+      setQuestion(question + 1)
+    } 
+  }
+  const prev = () => {
+    if (question > 0) {
+      setQuestion(question - 1)
+    } 
+  }
+  const answerQuestion = (answer: any) => {
+    const newResponse = response.slice()
+    newResponse[question] = answer;
+    setResponse(newResponse)
+  }
+
+  return (<YesNoQuestion answer={answerQuestion} 
+                         text={questions[question]} 
+                         value={response[question]}
+                         next={next} prev={prev}/>)
+
+  }
+
+export default Questions;
