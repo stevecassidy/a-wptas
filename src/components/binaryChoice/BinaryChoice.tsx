@@ -1,36 +1,6 @@
 import React from 'react';
-import { Box, Grommet, Button } from 'grommet';
-import { grommet } from 'grommet/themes';
-import { deepMerge } from 'grommet/utils';
-
-const customTheme = deepMerge(grommet, {
-  radioButtonGroup: {
-    container: {
-      gap: 'xlarge',
-    },
-  },
-  radioButton: {
-    border: {
-      color: 'red',
-      width: '10px',
-    },
-    hover: {
-      border: {
-        color: 'blue',
-      },
-      background: {
-        color: 'accent-4',
-      },
-    },
-    size: '100px', // affects the size of the outer circle
-    icon: {
-      size: '80px', // affects the size of the inner circle
-    },
-    check: {
-      radius: '20%',
-    },
-  },
-});
+import {Icon} from 'react-onsenui';
+import './BinaryChoice.css'
 
 const BinaryChoice = ({callback, value}: any) => {
 
@@ -38,23 +8,31 @@ const BinaryChoice = ({callback, value}: any) => {
           callback(val);
   }
 
-  let yescolor = 'red'
-  let nocolor = 'red'
+  let yesclass = ''
+  let noclass = ''
   if (value === '1') {
-      yescolor = 'green'
+      yesclass = 'selected'
   } else if (value === '0') {
-      nocolor = 'green'
+      noclass = 'selected'
   }
 
   return (
-    <Grommet theme={customTheme}>
-      <Box align="center" pad="large">
 
-        <Button label="Yes" primary onClick={() => onClick('1')} color={yescolor}/>
-        <Button label="No"  primary onClick={() => onClick('0')} color={nocolor}/>
+      <div>   
 
-      </Box>
-    </Grommet>
+      <div className="binaryChoiceContainer">
+        <div className={"binaryChoiceButton " + yesclass} onClick={() => onClick('1')}>
+          <Icon size={{default: 120}} icon='check' />
+        </div>
+        <div className={"binaryChoiceButton " + noclass} onClick={() => onClick('0')}>
+          <Icon size={{default: 120}} icon='close' />
+        </div>
+      </div>
+      </div> 
+
+
+
+
   );
 };
 

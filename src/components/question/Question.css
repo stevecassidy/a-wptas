@@ -1,0 +1,22 @@
+.binaryChoice .button {
+    width: 30%;
+    margin-left: 30%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  #question-text {
+      width: 90%;
+      margin: auto;
+      text-align: center;
+      padding: 20px;
+  }
+
+  #question-text #request {
+      color: gray;
+  }
+
+  #question-text #question {
+      font-weight: bold;
+  }

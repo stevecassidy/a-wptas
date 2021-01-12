@@ -1,30 +1,27 @@
 import React, { useState } from 'react';
-import { Markdown, Box, Button, grommet, Grommet} from 'grommet';
+import {Button, Row, Col} from 'react-onsenui';
 import BinaryChoice from '../binaryChoice/BinaryChoice';
+import './Question.css'
 
 const YesNoQuestion = ({text, answer, next, prev, value}: any) => {
+
 
   const onChange = (v: string) => {
     answer(v);
   }
 
   return (
-    <Grommet theme={grommet}>
-      <Box>
-        <Markdown>{text}</Markdown>
+      <div className='binaryChoice'>
+        <div id='question-text'>
+          <div id='request'>Ask the patient:</div>
+          <div id='question'>{text}</div>
+        </div>
         <BinaryChoice callback={onChange} value={value} />
-        <Box 
-          direction="row" 
-          pad="large"
-          gap="large"
-          align="stretch"
-          justify="stretch"
-          >
-          <Button label="Prev"  onClick={prev}/>
-          <Button label="Next"  onClick={next}/>
-        </Box>
-      </Box>
-      </Grommet>
+        <Row >
+          <Col><Button  onClick={prev}>Prev</Button></Col>
+          <Col><Button  onClick={next}>Next</Button></Col>
+        </Row>
+      </div>
   );
 };
 
@@ -39,7 +36,6 @@ const Questions = () => {
     ]
 
   const [response, setResponse]= useState(new Array(questions.length))
-
   const [question, setQuestion] = useState(0)
 
   const next = () => {

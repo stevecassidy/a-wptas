@@ -1,10 +1,9 @@
 import React from 'react';
 import { RouteComponentProps, navigate} from "@reach/router"
-import { Box, Button } from 'grommet';
+import {Button, Card} from 'react-onsenui';
 import './Home.css';
 
 function Home(props: RouteComponentProps) {
-
 
     const onClick = (event: React.MouseEvent<HTMLElement>) => {
         event.preventDefault();
@@ -15,29 +14,22 @@ function Home(props: RouteComponentProps) {
 
   return (
     <div className="Home">
-        <Box justify="center" align="center" pad="medium" gap="medium">
-            <Box
-                border
-                justify="center"
-                alignSelf="center"
-                height="250px"
-                width="250px"
-                >
-                <Button fill label="New Patient" onClick={onClick} {...props} data-path="/newpatient"/>
-            </Box>
-
-            <Box
-                border
-                justify="center"
-                alignSelf="center"
-                align="center"
-                height="250px"
-                width="250px"
-                >
-                <Button label="Review Patients" fill onClick={onClick} data-path='/listpatients' />
-            </Box>
-
-        </Box>
+        <Card >
+            <div className='title'>
+            <Button onClick={onClick} modifier='large-cta' data-path="/newpatient">New Patient</Button>
+            </div>
+            <div className='content'>
+            <p>Start an assessment of a new patient.</p>
+            </div>
+        </Card>
+        <Card >
+            <div className='title'>
+            <Button onClick={onClick} modifier='large-cta' data-path='/listpatients'>Review Patients</Button>
+            </div>
+            <div className='content'>
+            <p>Review results from previous patients.</p>
+            </div>
+        </Card>
     </div>
   );
 }

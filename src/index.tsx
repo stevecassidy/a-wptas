@@ -4,10 +4,15 @@ import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 
-ReactDOM.render(
-  <React.StrictMode>
+
+/* this gives many warnings...
+ <React.StrictMode>
     <App />
-  </React.StrictMode>,
+  </React.StrictMode>
+*/
+
+ReactDOM.render(
+  <App />,
   document.getElementById('root')
 );
 
