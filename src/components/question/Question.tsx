@@ -1,9 +1,10 @@
+import { navigate } from '@reach/router';
 import React, { useState } from 'react';
 import {Button, Row, Col} from 'react-onsenui';
 import BinaryChoice from '../binaryChoice/BinaryChoice';
 import './Question.css'
 
-const YesNoQuestion = ({text, answer, next, prev, value}: any) => {
+const YesNoQuestion = ({question, answer, next, prev, value}: any) => {
 
 
   const onChange = (v: string) => {
@@ -14,7 +15,8 @@ const YesNoQuestion = ({text, answer, next, prev, value}: any) => {
       <div className='binaryChoice'>
         <div id='question-text'>
           <div id='request'>Ask the patient:</div>
-          <div id='question'>{text}</div>
+          <div id='question'>{question.text}</div>
+          <div id='hint'>{question.hint}</div>
         </div>
         <BinaryChoice callback={onChange} value={value} />
         <Row >
@@ -28,11 +30,11 @@ const YesNoQuestion = ({text, answer, next, prev, value}: any) => {
 const Questions = () => {
 
   const questions = [ 
-    "What is your name?", 
-    "What is the name of this place?", 
-    "Why are you here?", 
-    "What is the month?", 
-    "What is the year?"
+    {text: "What is your name?", hint: "Patient must provide thier full name."}, 
+    {text: "What is the name of this place?", hint: "Patient must be able to give the name of e.g. sports field"}, 
+    {text: "Why are you here?", hint: "Patient must know why they were admitted to hospital"}, 
+    {text: "What is the month?", hint: "Patient must name the month"}, 
+    {text: "What is the year?", hint: "Ok if the response is '21' or '2021'"}
     ]
 
   const [response, setResponse]= useState(new Array(questions.length))
@@ -41,7 +43,9 @@ const Questions = () => {
   const next = () => {
     if (question + 1 < questions.length) {
       setQuestion(question + 1)
-    } 
+    } else {
+      navigate('/newpatient/images');
+    }
   }
   const prev = () => {
     if (question > 0) {
@@ -55,7 +59,7 @@ const Questions = () => {
   }
 
   return (<YesNoQuestion answer={answerQuestion} 
-                         text={questions[question]} 
+                         question={questions[question]} 
                          value={response[question]}
                          next={next} prev={prev}/>)
 

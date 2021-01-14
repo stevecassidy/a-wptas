@@ -1,0 +1,27 @@
+.image-grid {
+    display: grid;
+    row-gap: 10px;
+    justify-content: center;
+}
+
+.image {
+    height: 175px;
+    width: 175px;
+    background-color: #1a1919;
+}
+.image img {
+    height: 175px;
+    margin-left: 22px;
+}
+
+.image.selected {
+    background-color: green;
+}
+
+.image-question .button {
+    width: 50%;
+    margin-left: 30%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+  }

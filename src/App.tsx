@@ -7,9 +7,11 @@ import 'onsenui/css/onsen-css-components.css';
 
 import Home from './components/home/Home'
 import Questions from './components/question/Question';
-
+import ImageQuestion from './components/imageQuestion/ImageQuestion';
 
 const NewPatient = (props: RouteComponentProps) => <Questions />
+const ImageDisplay = (props: RouteComponentProps) => <ImageQuestion respond={false}/>
+const ImageDisplayResponse = (props: RouteComponentProps) => <ImageQuestion respond={true}/>
 const ListPatients = (props: RouteComponentProps) => <div>List Patients</div>
 
 function App() {
@@ -22,6 +24,8 @@ function App() {
       <Router>
         <Home path="/" />
         <NewPatient path="/newpatient" />
+        <ImageDisplay path="/newpatient/images" />
+        <ImageDisplayResponse path="/newpatient/images/response" />
         <ListPatients path="/listpatients" />
       </Router>
       
