@@ -16,4 +16,5 @@ export interface ActionType {
     type?: string ; 
     value?: Patient; 
     index?: number; 
+    score?: number;
   }

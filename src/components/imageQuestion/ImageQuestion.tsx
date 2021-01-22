@@ -7,13 +7,17 @@ import keys from './images/keys.png';
 import bird from './images/bird.png';
 import { navigate } from '@reach/router';
 
-const ImageBlock = ({label, image, respond}: any) => {
+import {useDispatch} from 'react-redux';
+import * as actions from '../../redux/patients';
+
+const ImageBlock = ({label, image, respond, callback}: any) => {
 
     const [selected, setSelected] = useState(false);
 
     const onClick = () => {
         if (respond) {
-            console.log(label);
+            console.log(label, !selected);
+            callback(!selected);
             setSelected(!selected);
         }
     }
@@ -36,11 +40,15 @@ interface ImageQuestionProps extends RouteComponentProps {
 
 const ImageQuestion = ({respond}: ImageQuestionProps) => {
 
+    const dispatch = useDispatch();
+    const [score, setScore] = useState(0);
+
     const next = () => {
         if (!respond) {
             navigate('/newpatient/images/response');
         } else {
-            navigate('/')
+            dispatch(actions.setPatientPictureScore(score));
+            //navigate('/')
         }
     }
     const prev = () => {
@@ -51,14 +59,24 @@ const ImageQuestion = ({respond}: ImageQuestionProps) => {
         }
     }
 
+    const callback = (state: boolean) => {
+        if (state) {
+            setScore(Math.min(3, score+1))
+        } else {
+            setScore(Math.max(0, score-1))
+        }
+        
+    }
+
     if (respond) {
+        console.log("score", score);
         return (
             <div className='image-question'>
                 <p>Touch the images recalled correctly</p>
             <div className='image-grid'>
-                <ImageBlock label="cup" image={cup} respond={respond}/>
-                <ImageBlock label="keys" image={keys} respond={respond}/>
-                <ImageBlock label="bird" image={bird} respond={respond}/>
+                <ImageBlock label="cup" image={cup} respond={respond} callback={callback}/>
+                <ImageBlock label="keys" image={keys} respond={respond} callback={callback}/>
+                <ImageBlock label="bird" image={bird} respond={respond} callback={callback}/>
             </div>
             <Row >
                 <Col><Button  onClick={prev}>Prev</Button></Col>

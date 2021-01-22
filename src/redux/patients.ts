@@ -4,6 +4,7 @@ const ADD_PATIENT = 'ADD_PATIENT';
 const UPDATE_PATIENT = 'UPDATE_PATIENT';
 const SELECT_PATIENT = 'SELECT_PATIENT';
 const DELETE_PATIENT = 'DELETE_PATIENT';
+const SET_PATIENT_PICTURE_SCORE = 'SET_PATIENT_PICTURE_SCORE';
 
 export function selectPatient(index: number) : ActionType {
   return {
@@ -24,6 +25,13 @@ export function updatePatient(value: Patient) : ActionType {
     type: UPDATE_PATIENT,
     value
   };
+}
+
+export function setPatientPictureScore(score: number) : ActionType {
+    return {
+        type: SET_PATIENT_PICTURE_SCORE,
+        score
+    }
 }
 
 export function addPatient(value: Patient) : ActionType {
@@ -53,8 +61,7 @@ export default function reducer(state: StateType = initialState,
                     ...state.patients.slice(0, action.index),
                     action.value,
                     ...state.patients.slice(action.index+1)
-                ],
-                currentPatient: state.currentPatient
+                ]
             }
             );
         }
@@ -86,14 +93,38 @@ export default function reducer(state: StateType = initialState,
             {},
             state,
             {
-                list: [
+                patients: [
                 ...state.patients.slice(0, action.index),
                 ...state.patients.slice(action.index+1)
                 ]
             }
             );
-      } 
-    break; 
+      }
+    break;
+  case SET_PATIENT_PICTURE_SCORE:
+      if (state.currentPatient >= 0) {
+        if (action.score) {
+            const updatedPatient = Object.assign(
+                {},
+                state.patients[state.currentPatient],
+                {
+                    pictures: action.score 
+                }
+            );
+
+            newState = Object.assign(
+                {},
+                state,
+                {
+                    patients: [
+                        ...state.patients.slice(0, state.currentPatient),
+                        updatedPatient,
+                        ...state.patients.slice(state.currentPatient+1)
+                    ]
+                }
+            );
+        }
+    }
   }
 
   // update localStorage
