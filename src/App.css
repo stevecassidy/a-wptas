@@ -1,0 +1,12 @@
+ons-toolbar a {
+    text-decoration: none;
+    color: maroon;
+}
+
+ons-toolbar .center {
+    text-align: center;
+}
+
+ons-toolbar .left {
+    text-align: center;
+}

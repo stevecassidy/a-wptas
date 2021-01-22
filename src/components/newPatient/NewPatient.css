@@ -1,0 +1,13 @@
+.new-patient-form {
+    margin-top: 200px;
+    display: grid;
+    justify-content: center;
+}
+
+.form-row {
+    margin-top: 30px;
+}
+
+.new-patient-form ons-button {
+    width: 100%;
+}

@@ -3,7 +3,10 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
+import configureStore from './redux/configureStore';
+import { Provider } from 'react-redux';
 
+const store = configureStore();
 
 /* this gives many warnings...
  <React.StrictMode>
@@ -12,7 +15,9 @@ import reportWebVitals from './reportWebVitals';
 */
 
 ReactDOM.render(
-  <App />,
+  <Provider store={store}>
+   <App />
+  </Provider>,
   document.getElementById('root')
 );
 

@@ -1,11 +1,13 @@
-import { navigate } from '@reach/router';
+import { navigate, RouteComponentProps } from '@reach/router';
 import React, { useState } from 'react';
 import {Button, Row, Col} from 'react-onsenui';
 import BinaryChoice from '../binaryChoice/BinaryChoice';
+import {useDispatch, useSelector} from 'react-redux';
+import {Patient, StateType} from '../../types';
+import * as actions from '../../redux/patients';
 import './Question.css'
 
 const YesNoQuestion = ({question, answer, next, prev, value}: any) => {
-
 
   const onChange = (v: string) => {
     answer(v);
@@ -27,7 +29,12 @@ const YesNoQuestion = ({question, answer, next, prev, value}: any) => {
   );
 };
 
-const Questions = () => {
+const Questions = (props: RouteComponentProps) => {
+
+  const dispatch = useDispatch()
+  const patient: Patient = useSelector((state: StateType) => {
+      return state.patients[state.currentPatient];
+  });
 
   const questions = [ 
     {text: "What is your name?", hint: "Patient must provide thier full name."}, 
@@ -47,15 +54,19 @@ const Questions = () => {
       navigate('/newpatient/images');
     }
   }
+
   const prev = () => {
     if (question > 0) {
       setQuestion(question - 1)
     } 
   }
+
   const answerQuestion = (answer: any) => {
     const newResponse = response.slice()
     newResponse[question] = answer;
     setResponse(newResponse)
+    patient.questions = newResponse;
+    dispatch(actions.updatePatient(patient));
   }
 
   return (<YesNoQuestion answer={answerQuestion} 

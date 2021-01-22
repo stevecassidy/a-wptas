@@ -1,18 +1,21 @@
-import {useState, Fragment} from 'react';
+import {useState} from 'react';
 import {Button, Row, Col} from 'react-onsenui';
+import {RouteComponentProps} from '@reach/router';
 import './ImageQuestion.css';
-import cup from './images/cup.png'
-import keys from './images/keys.png'
-import bird from './images/bird.png'
+import cup from './images/cup.png';
+import keys from './images/keys.png';
+import bird from './images/bird.png';
 import { navigate } from '@reach/router';
 
-const ImageBlock = ({label, image}: any) => {
+const ImageBlock = ({label, image, respond}: any) => {
 
     const [selected, setSelected] = useState(false);
 
     const onClick = () => {
-        console.log(label);
-        setSelected(!selected);
+        if (respond) {
+            console.log(label);
+            setSelected(!selected);
+        }
     }
 
     let className = 'image';
@@ -27,8 +30,11 @@ const ImageBlock = ({label, image}: any) => {
     )
 }
 
+interface ImageQuestionProps extends RouteComponentProps {
+    respond: boolean
+}
 
-const ImageQuestion = ({respond}: any) => {
+const ImageQuestion = ({respond}: ImageQuestionProps) => {
 
     const next = () => {
         if (!respond) {
@@ -50,9 +56,9 @@ const ImageQuestion = ({respond}: any) => {
             <div className='image-question'>
                 <p>Touch the images recalled correctly</p>
             <div className='image-grid'>
-                <ImageBlock label="cup" image={cup} />
-                <ImageBlock label="keys" image={keys} />
-                <ImageBlock label="bird" image={bird} />
+                <ImageBlock label="cup" image={cup} respond={respond}/>
+                <ImageBlock label="keys" image={keys} respond={respond}/>
+                <ImageBlock label="bird" image={bird} respond={respond}/>
             </div>
             <Row >
                 <Col><Button  onClick={prev}>Prev</Button></Col>
