@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware, ActionFromReducer } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import patientReducer from './patients';
 import {StateType} from '../types';
 
