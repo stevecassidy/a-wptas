@@ -1,5 +1,5 @@
 import React from 'react'; 
-import {Router, RouteComponentProps, Link} from '@reach/router';
+import {Router, Link} from '@reach/router';
 import {Page, Toolbar, Icon} from 'react-onsenui'
 import './App.css';
 
@@ -10,8 +10,8 @@ import Home from './components/home/Home';
 import ImageQuestion from './components/imageQuestion/ImageQuestion';
 import NewPatient from './components/newPatient/NewPatient';
 import Questions from './components/question/Question';
-
-const ListPatients = (props: RouteComponentProps) => <div>List Patients</div>
+import PatientList from './components/patientList/PatientList';
+import PatientReport from './components/patientReport/PatientReport';
 
 function App() {
   return (
@@ -34,7 +34,8 @@ function App() {
         <Questions path="/newpatient/questions" />
         <ImageQuestion respond={false} path="/newpatient/images" />
         <ImageQuestion respond={true} path="/newpatient/images/response" />
-        <ListPatients path="/listpatients" />
+        <PatientList path="/listpatients" />
+        <PatientReport path="/patientreport" />
       </Router>
       
     </Page>

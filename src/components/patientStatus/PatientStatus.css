@@ -1,0 +1,30 @@
+.patient-report {
+    background-color: white;
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.patient-report-item {
+
+}
+.tick-cross {
+    color: white;
+    text-align: center;
+    height: 30px;
+    width: 30px;
+    border-radius: 15px;
+    margin: auto;
+}
+.tick {
+    background-color: green;
+}
+.tick-cross ons-icon {
+    margin-top: 5px;
+}
+.cross {
+    background-color: red;
+}
+.picture-score {
+    font-size: 25px;
+    font-weight: bold;
+}
