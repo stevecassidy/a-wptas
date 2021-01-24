@@ -11,16 +11,18 @@ const PatientStatus = (props: RouteComponentProps) => {
 
     return (
         <Row className="patient-report">
-            {patient.questions.map((q:number, idx: number) => (
+            {patient.questions.map((q:boolean, idx: number) => {
+                return (
                 <Col key={idx} className="patient-report-item">
                     <div className={`tick-cross ${q?"tick":"cross"}`}>
                         <Icon icon={q?"check":"close"} />
                     </div>
                 </Col> 
-            ))}
+                )
+            })}
             
             <Col>
-                <div className={`tick-cross ${patient.pictures==3?"tick":"cross"}`}>
+                <div className={`tick-cross ${patient.pictures===3?"tick":"cross"}`}>
                     <div className="picture-score">{patient.pictures}</div>
                 </div>
             </Col>

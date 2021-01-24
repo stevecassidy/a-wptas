@@ -52,7 +52,7 @@ export default function reducer(state: StateType = initialState,
   let newState: StateType = Object.assign({}, state);
   switch (action.type){
   case UPDATE_PATIENT:
-      if (action.index && action.index >= 0 && action.index < state.patients.length) {
+      if (typeof(action.index) === "number" && action.index >= 0 && action.index < state.patients.length) {
         newState =  Object.assign(
             {},
             state,
@@ -77,7 +77,7 @@ export default function reducer(state: StateType = initialState,
         );
     break;
   case SELECT_PATIENT:  // make the patient at index be the current patient
-    if (action.index && action.index >= 0 && action.index < state.patients.length) {
+    if (typeof(action.index) === "number" && action.index >= 0 && action.index < state.patients.length) {
         newState = Object.assign(
             {},
             state,
@@ -85,10 +85,12 @@ export default function reducer(state: StateType = initialState,
                 currentPatient: action.index
             }
             );
+        } else {
+            console.log("SELECT_PATIENT out of range", action.index, state.patients.length)
         }
     break;
   case DELETE_PATIENT:
-    if (action.index && action.index >= 0 && action.index < state.patients.length) {
+    if (typeof(action.index) === "number"  && action.index >= 0 && action.index < state.patients.length) {
         newState = Object.assign(
             {},
             state,
@@ -103,7 +105,7 @@ export default function reducer(state: StateType = initialState,
     break;
   case SET_PATIENT_PICTURE_SCORE:
       if (state.currentPatient >= 0) {
-        if (action.score) {
+        if (typeof(action.score) === "number" ) {
             const updatedPatient = Object.assign(
                 {},
                 state.patients[state.currentPatient],

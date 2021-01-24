@@ -5,19 +5,31 @@
     margin: auto;
 }
 
-.binaryChoiceButton {
+.binary-choice-button {
     width: 200px;
-    height: 200px;
-    background-color: red;
+    height: 200px; 
     justify-self: center;
     text-align: center;
     color: white;
+    background-color: grey;
 }
-.binaryChoiceButton ons-icon {
+.binary-choice-button ons-icon {
     margin-top: 40px;
     height: 200px;
     color: white; 
 }
-.binaryChoiceContainer .selected {
+.binaryChoiceContainer  {
+}
+
+.yes-button {
+    border: 4px solid green;
+}
+.yes-button.selected {
     background-color: green;
+}
+.no-button {
+    border: 4px solid red;
+}
+.no-button.selected {
+    background-color: red;
 }

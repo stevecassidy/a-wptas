@@ -15,7 +15,10 @@ const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore);
 let preloadedState: StateType;
 const persistedStateString = localStorage.getItem('state');
 if (persistedStateString) {
-  preloadedState = JSON.parse(persistedStateString);
+  preloadedState= JSON.parse(persistedStateString);
+  if (!preloadedState.patients || typeof(preloadedState.currentPatient) === "undefined") {
+    preloadedState = {patients: [], currentPatient: -1};
+  }
 }
 
 

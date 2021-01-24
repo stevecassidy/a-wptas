@@ -2,7 +2,7 @@
 export interface Patient {
     name: string,
     location: string,
-    questions: Array<number>,
+    questions: Array<boolean>,
     pictures: number,
     reminder: number,
 }

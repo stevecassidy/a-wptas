@@ -2,6 +2,7 @@ import { navigate, RouteComponentProps } from '@reach/router';
 import React, { useState } from 'react';
 import {Button, Row, Col} from 'react-onsenui';
 import BinaryChoice from '../binaryChoice/BinaryChoice';
+import PatientStatus from '../patientStatus/PatientStatus';
 import {useDispatch, useSelector} from 'react-redux';
 import {Patient, StateType} from '../../types';
 import * as actions from '../../redux/patients';
@@ -9,8 +10,8 @@ import './Question.css'
 
 const YesNoQuestion = ({question, answer, next, prev, value}: any) => {
 
-  const onChange = (v: string) => {
-    answer(v);
+  const onChange = (v: boolean) => {
+      answer(v);
   }
 
   return (
@@ -25,6 +26,7 @@ const YesNoQuestion = ({question, answer, next, prev, value}: any) => {
           <Col><Button  onClick={prev}>Prev</Button></Col>
           <Col><Button  onClick={next}>Next</Button></Col>
         </Row>
+        <PatientStatus />
       </div>
   );
 };
@@ -33,6 +35,7 @@ const Questions = (props: RouteComponentProps) => {
 
   const dispatch = useDispatch()
   const patient: Patient = useSelector((state: StateType) => {
+      console.log(state);
       return state.patients[state.currentPatient];
   });
 
@@ -44,7 +47,13 @@ const Questions = (props: RouteComponentProps) => {
     {text: "What is the year?", hint: "Ok if the response is '21' or '2021'"}
     ]
 
-  const [response, setResponse]= useState(new Array(questions.length))
+  console.log(patient);
+  let initialQuestions = Array<boolean>(5);
+  if (patient) {
+    initialQuestions = patient.questions;
+  }
+
+  const [response, setResponse]= useState(initialQuestions)
   const [question, setQuestion] = useState(0)
 
   const next = () => {
@@ -61,19 +70,25 @@ const Questions = (props: RouteComponentProps) => {
     } 
   }
 
-  const answerQuestion = (answer: any) => {
+  const answerQuestion = (answer: boolean) => {
     const newResponse = response.slice()
     newResponse[question] = answer;
     setResponse(newResponse)
     patient.questions = newResponse;
+    console.log(patient.questions);
     dispatch(actions.updatePatient(patient));
   }
+  console.log(patient);
+  console.log("QQ", response, question);
 
-  return (<YesNoQuestion answer={answerQuestion} 
-                         question={questions[question]} 
-                         value={response[question]}
-                         next={next} prev={prev}/>)
-
+  if (patient) {
+    return (<YesNoQuestion answer={answerQuestion} 
+                          question={questions[question]} 
+                          value={response[question]}
+                          next={next} prev={prev}/>)
+    } else { 
+      return (<p>Hmmm..</p>)
+    }
   }
 
 export default Questions;

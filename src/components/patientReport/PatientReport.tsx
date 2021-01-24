@@ -1,6 +1,6 @@
-
-import {RouteComponentProps} from '@reach/router';
+import {navigate, RouteComponentProps} from '@reach/router';
 import {useSelector} from 'react-redux';
+import {Button} from 'react-onsenui';
 import {StateType, Patient} from '../../types'; 
 import PatientStatus from '../patientStatus/PatientStatus';
 
@@ -16,6 +16,8 @@ const PatientReport = (props: RouteComponentProps) => {
             <div className="countdown">{patient.reminder}</div>
 
             <PatientStatus />
+
+            <Button onClick={() => {navigate("/newpatient/questions")}}>Update</Button>
         </div>
     )
 
