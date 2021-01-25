@@ -54,14 +54,6 @@ const initialState: StateType = {
   currentPatient: -1
 };
 
-
-const checkTimers = (patients: Patient[]) => {
-    
-    console.log("checkTimers", patients);
-    
-}
-
-
 export default function reducer(state: StateType = initialState, 
                                 action: ActionType) {
 
