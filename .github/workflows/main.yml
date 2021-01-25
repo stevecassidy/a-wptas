@@ -12,7 +12,9 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Install and Build 
+      - name: Install and Build
+        env: 
+          PUBLIC_URL: https://stevecassidy.github.io/a-wptas/
         run: |
           yarn install
           yarn run build
