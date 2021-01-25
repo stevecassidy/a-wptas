@@ -3,6 +3,7 @@ import {Col, Row, Button} from 'react-onsenui';
 import {navigate, RouteComponentProps} from '@reach/router';
 import {useDispatch} from 'react-redux';
 import * as actions from '../../redux/patients';
+import paths from '../../urls';
 
 
 const SetReminder = (props: RouteComponentProps) => {
@@ -11,7 +12,7 @@ const SetReminder = (props: RouteComponentProps) => {
     
     const setTimer = (minutes: number) => {
         dispatch(actions.setPatientTimer(minutes));
-        navigate('/listpatients')
+        navigate(paths.listpatients);
     }
 
     return (

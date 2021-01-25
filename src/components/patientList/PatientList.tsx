@@ -4,6 +4,7 @@ import {ListItem, List} from 'react-onsenui';
 import {useDispatch, useSelector} from 'react-redux';
 import {StateType, Patient} from '../../types';
 import * as actions from '../../redux/patients';
+import paths from '../../urls';
 
 
 const PatientList = (props: RouteComponentProps) => {
@@ -14,7 +15,7 @@ const PatientList = (props: RouteComponentProps) => {
     const onClick = (idx: number | undefined) => {
         if (typeof(idx) != "undefined") {
             dispatch(actions.selectPatient(idx));
-            navigate('/patientreport');
+            navigate(paths.patientreport);
         }  
     }
 

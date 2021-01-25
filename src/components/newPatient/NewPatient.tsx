@@ -5,6 +5,7 @@ import {Input, Button} from 'react-onsenui';
 import {useDispatch} from 'react-redux';
 import {Patient} from '../../types';
 import * as actions from '../../redux/patients';
+import paths from '../../urls';
 import './NewPatient.css'
 
 const NewPatient = (props: RouteComponentProps) => {
@@ -24,7 +25,7 @@ const NewPatient = (props: RouteComponentProps) => {
 
     const onClick = (event: any) => {
         dispatch(actions.addPatient(patient))
-        navigate('/newpatient/questions')
+        navigate(paths.questions)
     }
 
     return (

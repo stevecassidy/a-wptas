@@ -6,6 +6,7 @@ import PatientStatus from '../patientStatus/PatientStatus';
 import {useDispatch, useSelector} from 'react-redux';
 import {Patient, StateType} from '../../types';
 import * as actions from '../../redux/patients';
+import paths from '../../urls';
 import './Question.css'
 
 const YesNoQuestion = ({question, answer, next, prev, value}: any) => {
@@ -60,7 +61,7 @@ const Questions = (props: RouteComponentProps) => {
     if (question + 1 < questions.length) {
       setQuestion(question + 1)
     } else {
-      navigate('/newpatient/images');
+      navigate(paths.images);
     }
   }
 
@@ -78,8 +79,6 @@ const Questions = (props: RouteComponentProps) => {
     console.log(patient.questions);
     dispatch(actions.updatePatient(patient));
   }
-  console.log(patient);
-  console.log("QQ", response, question);
 
   if (patient) {
     return (<YesNoQuestion answer={answerQuestion} 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { RouteComponentProps, navigate} from "@reach/router"
 import {Button, Card} from 'react-onsenui';
+import paths from '../../urls';
 import './Home.css';
 
 function Home(props: RouteComponentProps) {
@@ -16,7 +17,7 @@ function Home(props: RouteComponentProps) {
     <div className="Home">
         <Card >
             <div className='title'>
-            <Button onClick={onClick} modifier='large-cta' data-path="/newpatient">New Patient</Button>
+            <Button onClick={onClick} modifier='large-cta' data-path={paths.newpatient}>New Patient</Button>
             </div>
             <div className='content'>
             <p>Start an assessment of a new patient.</p>
@@ -24,7 +25,7 @@ function Home(props: RouteComponentProps) {
         </Card>
         <Card >
             <div className='title'>
-            <Button onClick={onClick} modifier='large-cta' data-path='/listpatients'>Review Patients</Button>
+            <Button onClick={onClick} modifier='large-cta' data-path={paths.listpatients}>Review Patients</Button>
             </div>
             <div className='content'>
             <p>Review results from previous patients.</p>

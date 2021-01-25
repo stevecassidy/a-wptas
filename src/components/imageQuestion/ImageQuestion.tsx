@@ -6,6 +6,7 @@ import cup from './images/cup.png';
 import keys from './images/keys.png';
 import bird from './images/bird.png';
 import { navigate } from '@reach/router';
+import paths from '../../urls';
 
 import {useDispatch} from 'react-redux';
 import * as actions from '../../redux/patients';
@@ -45,18 +46,18 @@ const ImageQuestion = ({respond}: ImageQuestionProps) => {
 
     const next = () => {
         if (!respond) {
-            //navigate('/newpatient/images/response');
-            navigate('/setreminder');
+            //navigate(paths.imageresponse);
+            navigate(paths.setreminder);
         } else {
             dispatch(actions.setPatientPictureScore(score));
-            navigate('/listpatients')
+            navigate(paths.listpatients)
         }
     }
     const prev = () => {
         if (respond) {
-            navigate('/newpatient/images');
+            navigate(paths.images);
         } else {
-            navigate('/newpatient/')
+            navigate(paths.newpatient)
         }
     }
 

@@ -3,6 +3,7 @@ import {useSelector} from 'react-redux';
 import {Button, Row, Col} from 'react-onsenui';
 import {StateType, Patient} from '../../types'; 
 import PatientStatus from '../patientStatus/PatientStatus';
+import paths from '../../urls';
 import './PatientReport.css';
 
 
@@ -25,8 +26,9 @@ const PatientReport = (props: RouteComponentProps) => {
 
             <Col>
                 <Row><PatientStatus /></Row>
-                <Row><Button onClick={() => {navigate("/newpatient/questions")}}>Update Answers</Button></Row>
-                <Row><Button onClick={() => {navigate("/setreminder")}}>Set Reminder</Button></Row>
+                <Row><Button onClick={() => {navigate(paths.questions)}}>Update Answers</Button></Row>
+                <Row><Button onClick={() => {navigate(paths.setreminder)}}>Set Reminder</Button></Row>
+                <Row><Button onClick={() => {navigate(paths.imageresponse)}}>Image Recall</Button></Row>
             </Col>
         </div>
     )
