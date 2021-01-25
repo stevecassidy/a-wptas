@@ -45,7 +45,8 @@ const ImageQuestion = ({respond}: ImageQuestionProps) => {
 
     const next = () => {
         if (!respond) {
-            navigate('/newpatient/images/response');
+            //navigate('/newpatient/images/response');
+            navigate('/setreminder');
         } else {
             dispatch(actions.setPatientPictureScore(score));
             navigate('/listpatients')

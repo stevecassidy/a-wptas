@@ -18,12 +18,17 @@ const PatientList = (props: RouteComponentProps) => {
         }  
     }
 
-    const renderRow = (row: Patient, idx?: number | undefined) => 
-        (<ListItem key={idx} onClick={() => onClick(idx)}>
+    const renderRow = (row: Patient, idx?: number | undefined) => {
+        let reminder = (row.reminder - Date.now())/60000;
+        if (reminder < 0) {
+            reminder = 0;
+        }
+        return (<ListItem key={idx} onClick={() => onClick(idx)}>
             <div className="left">{row.name}</div> 
             <div className="center">{row.location}</div>
-            <div className="right">{row.reminder}</div>
+            <div className="right">{(reminder/60).toFixed(0)}h {(reminder % 60).toFixed()}m</div>
             </ListItem>);
+    }
 
     return (
         <List

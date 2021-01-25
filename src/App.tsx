@@ -1,6 +1,8 @@
 import React from 'react'; 
 import {Router, Link} from '@reach/router';
 import {Page, Toolbar, Icon} from 'react-onsenui'
+
+
 import './App.css';
 
 import 'onsenui/css/onsenui.css';
@@ -12,8 +14,11 @@ import NewPatient from './components/newPatient/NewPatient';
 import Questions from './components/question/Question';
 import PatientList from './components/patientList/PatientList';
 import PatientReport from './components/patientReport/PatientReport';
+import SetReminder from './components/setReminder/SetReminder';
+
 
 function App() {
+
   return (
     <Page renderToolbar={() => 
       <Toolbar>
@@ -36,6 +41,7 @@ function App() {
         <ImageQuestion respond={true} path="/newpatient/images/response" />
         <PatientList path="/listpatients" />
         <PatientReport path="/patientreport" />
+        <SetReminder path="/setreminder" />
       </Router>
       
     </Page>
