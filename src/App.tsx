@@ -10,6 +10,7 @@ import 'onsenui/css/onsen-css-components.css';
 
 import Home from './components/home/Home';
 import ImageQuestion from './components/imageQuestion/ImageQuestion';
+import ImageGrid from './components/imageQuestion/ImageGrid';
 import NewPatient from './components/newPatient/NewPatient';
 import Questions from './components/question/Question';
 import PatientList from './components/patientList/PatientList';
@@ -39,6 +40,7 @@ function App() {
         <Questions path={paths.questions} />
         <ImageQuestion respond={false} path={paths.images} />
         <ImageQuestion respond={true} path={paths.imageresponse} />
+        <ImageGrid path={paths.imagegrid} />
         <PatientList path={paths.listpatients} />
         <PatientReport path={paths.patientreport} />
         <SetReminder path={paths.setreminder} />

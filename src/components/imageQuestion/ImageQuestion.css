@@ -1,5 +1,14 @@
 .image-grid {
     display: grid;
+    grid-template-rows:  1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 10px;
+    justify-content: center;
+    justify-items: center;
+}
+
+.image-strip {
+    display: grid;
     row-gap: 10px;
     justify-content: center;
 }
@@ -25,3 +34,21 @@
     margin-bottom: 10px;
     text-align: center;
   }
+
+#image-question-text {
+    width: 90%;
+    margin: auto;
+    text-align: center;
+    font-weight: bold;
+    font-size: larger;
+}
+
+.image-question ons-row {
+    width: 90%;
+    margin: auto;
+    margin-top: 10px;
+}
+#done-button {
+    width: 100%;
+    margin: 0;
+}

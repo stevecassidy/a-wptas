@@ -18,17 +18,21 @@ const PatientReport = (props: RouteComponentProps) => {
     }
 
     return (
-        <div>
-            <p>Patient report for <strong>{patient.name}</strong> at <strong>{patient.location}</strong></p>
+        <div className='patient-report'>
+            <dl>
+                <dt>Name</dt><dd>{patient.name}</dd>
+                <dt>Location</dt><dd>{patient.location}</dd>
+            </dl>
 
             <p>Time to recall test</p>
             <div className="reminder">{(reminder/60).toFixed(0)}h {(reminder % 60).toFixed()}m</div>
 
-            <Col>
+            <Col className="reminder-actions">
                 <Row><PatientStatus /></Row>
                 <Row><Button onClick={() => {navigate(paths.questions)}}>Update Answers</Button></Row>
                 <Row><Button onClick={() => {navigate(paths.setreminder)}}>Set Reminder</Button></Row>
                 <Row><Button onClick={() => {navigate(paths.imageresponse)}}>Image Recall</Button></Row>
+                <Row><Button onClick={() => {navigate(paths.imagegrid)}}>Image Grid</Button></Row>
             </Col>
         </div>
     )

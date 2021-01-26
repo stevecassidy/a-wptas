@@ -23,9 +23,9 @@ const YesNoQuestion = ({question, answer, next, prev, value}: any) => {
           <div id='hint'>{question.hint}</div>
         </div>
         <BinaryChoice callback={onChange} value={value} />
-        <Row >
-          <Col><Button  onClick={prev}>Prev</Button></Col>
-          <Col><Button  onClick={next}>Next</Button></Col>
+        <Row>
+          {prev?(<Col><Button  onClick={prev}>Prev</Button></Col>):(<Col />)}
+          {next?(<Col><Button  onClick={next}>Next</Button></Col>):<Col />}
         </Row>
         <PatientStatus />
       </div>
@@ -36,7 +36,6 @@ const Questions = (props: RouteComponentProps) => {
 
   const dispatch = useDispatch()
   const patient: Patient = useSelector((state: StateType) => {
-      console.log(state);
       return state.patients[state.currentPatient];
   });
 
@@ -48,7 +47,6 @@ const Questions = (props: RouteComponentProps) => {
     {text: "What is the year?", hint: "Ok if the response is '21' or '2021'"}
     ]
 
-  console.log(patient);
   let initialQuestions = Array<boolean>(5);
   if (patient) {
     initialQuestions = patient.questions;
@@ -76,7 +74,6 @@ const Questions = (props: RouteComponentProps) => {
     newResponse[question] = answer;
     setResponse(newResponse)
     patient.questions = newResponse;
-    console.log(patient.questions);
     dispatch(actions.updatePatient(patient));
   }
 
@@ -84,7 +81,8 @@ const Questions = (props: RouteComponentProps) => {
     return (<YesNoQuestion answer={answerQuestion} 
                           question={questions[question]} 
                           value={response[question]}
-                          next={next} prev={prev}/>)
+                          next={next} 
+                          prev={(question > 0)?prev:0}/>)
     } else { 
       return (<p>Hmmm..</p>)
     }

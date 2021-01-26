@@ -1,4 +1,39 @@
+.patient-report p {
+    text-align: center;
+}
+
 .reminder {
     font-size: 50pt;
     text-align: center;
 }
+
+.reminder-actions {
+    width: 90%;
+    margin: auto;
+}
+.reminder-actions ons-row {
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.reminder-actions ons-button {
+    width: 100%;
+}
+
+
+dl {
+    padding: 0.5em;
+  }
+  dt {
+    float: left;
+    clear: left;
+    width: 100px;
+    text-align: right;
+    font-weight: bold; 
+  }
+  dt::after {
+    content: ":";
+  }
+  dd {
+    margin: 0 0 0 110px;
+    padding: 0 0 0.5em 0;
+  }

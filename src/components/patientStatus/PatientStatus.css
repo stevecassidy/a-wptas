@@ -1,12 +1,9 @@
-.patient-report {
+.patient-status {
     background-color: white;
     border: 1px solid black;
     padding: 5px;
 }
 
-.patient-report-item {
-
-}
 .tick-cross {
     color: white;
     text-align: center;

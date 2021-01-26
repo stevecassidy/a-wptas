@@ -10,11 +10,10 @@ const urls = {
     questions: r('questions'),
     images: r('images'),
     imageresponse: r('imageresponse'),
+    imagegrid: r('imagegrid'),
     listpatients: r('listpatients'),
     patientreport: r('patientreport'),
     setreminder: r('setreminder')
 };
-
-console.log(urls);
 
 export default urls;

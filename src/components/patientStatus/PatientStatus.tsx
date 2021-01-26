@@ -10,10 +10,10 @@ const PatientStatus = (props: RouteComponentProps) => {
     const patient: Patient = useSelector<StateType, Patient>(state => state.patients[state.currentPatient])
 
     return (
-        <Row className="patient-report">
+        <Row className="patient-status">
             {patient.questions.map((q:boolean, idx: number) => {
                 return (
-                <Col key={idx} className="patient-report-item">
+                <Col key={idx} className="patient-status-item">
                     <div className={`tick-cross ${q?"tick":"cross"}`}>
                         <Icon icon={q?"check":"close"} />
                     </div>

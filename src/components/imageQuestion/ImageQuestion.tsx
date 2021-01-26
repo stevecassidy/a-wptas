@@ -7,33 +7,10 @@ import keys from './images/keys.png';
 import bird from './images/bird.png';
 import { navigate } from '@reach/router';
 import paths from '../../urls';
-
 import {useDispatch} from 'react-redux';
 import * as actions from '../../redux/patients';
 
-const ImageBlock = ({label, image, respond, callback}: any) => {
-
-    const [selected, setSelected] = useState(false);
-
-    const onClick = () => {
-        if (respond) {
-            console.log(label, !selected);
-            callback(!selected);
-            setSelected(!selected);
-        }
-    }
-
-    let className = 'image';
-    if (selected) {
-        className += ' selected';
-    }
-
-    return (                
-    <div className={className} onClick={onClick}>
-        <img src={image} alt={label}></img>
-    </div>
-    )
-}
+import ImageBlock from './ImageBlock';
 
 interface ImageQuestionProps extends RouteComponentProps {
     respond: boolean
@@ -50,7 +27,7 @@ const ImageQuestion = ({respond}: ImageQuestionProps) => {
             navigate(paths.setreminder);
         } else {
             dispatch(actions.setPatientPictureScore(score));
-            navigate(paths.listpatients)
+            navigate(paths.patientreport)
         }
     }
     const prev = () => {
@@ -71,11 +48,12 @@ const ImageQuestion = ({respond}: ImageQuestionProps) => {
     }
 
     if (respond) {
-        console.log("score", score);
         return (
             <div className='image-question'>
-                <p>Touch the images recalled correctly</p>
-            <div className='image-grid'>
+                <div id='image-question-text'>
+                    <p>Touch the images recalled correctly</p>
+                </div>
+            <div className='image-strip'>
                 <ImageBlock label="cup" image={cup} respond={respond} callback={callback}/>
                 <ImageBlock label="keys" image={keys} respond={respond} callback={callback}/>
                 <ImageBlock label="bird" image={bird} respond={respond} callback={callback}/>
@@ -89,7 +67,9 @@ const ImageQuestion = ({respond}: ImageQuestionProps) => {
     } else {
         return (
             <div className='image-question'> 
-                <p>Remember these images.</p>
+                <div id='image-question-text'>
+                    <p>Remember these images:</p>
+                </div>
             <div className='image-grid'>
                 <ImageBlock label="cup" image={cup} />
                 <ImageBlock label="keys" image={keys} />
