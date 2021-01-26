@@ -1,31 +1,36 @@
 {
   "files": {
-    "main.css": "https://stevecassidy.github.io/a-wptas/static/css/main.dc8d41b5.chunk.css",
-    "main.js": "https://stevecassidy.github.io/a-wptas/static/js/main.610fad61.chunk.js",
-    "main.js.map": "https://stevecassidy.github.io/a-wptas/static/js/main.610fad61.chunk.js.map",
+    "main.css": "https://stevecassidy.github.io/a-wptas/static/css/main.75d246d8.chunk.css",
+    "main.js": "https://stevecassidy.github.io/a-wptas/static/js/main.7467d6fb.chunk.js",
+    "main.js.map": "https://stevecassidy.github.io/a-wptas/static/js/main.7467d6fb.chunk.js.map",
     "runtime-main.js": "https://stevecassidy.github.io/a-wptas/static/js/runtime-main.520d6281.js",
     "runtime-main.js.map": "https://stevecassidy.github.io/a-wptas/static/js/runtime-main.520d6281.js.map",
     "static/css/2.48549584.chunk.css": "https://stevecassidy.github.io/a-wptas/static/css/2.48549584.chunk.css",
-    "static/js/2.cfbf7b12.chunk.js": "https://stevecassidy.github.io/a-wptas/static/js/2.cfbf7b12.chunk.js",
-    "static/js/2.cfbf7b12.chunk.js.map": "https://stevecassidy.github.io/a-wptas/static/js/2.cfbf7b12.chunk.js.map",
+    "static/js/2.26019e0a.chunk.js": "https://stevecassidy.github.io/a-wptas/static/js/2.26019e0a.chunk.js",
+    "static/js/2.26019e0a.chunk.js.map": "https://stevecassidy.github.io/a-wptas/static/js/2.26019e0a.chunk.js.map",
     "static/js/3.05520149.chunk.js": "https://stevecassidy.github.io/a-wptas/static/js/3.05520149.chunk.js",
     "static/js/3.05520149.chunk.js.map": "https://stevecassidy.github.io/a-wptas/static/js/3.05520149.chunk.js.map",
     "index.html": "https://stevecassidy.github.io/a-wptas/index.html",
     "service-worker.js": "https://stevecassidy.github.io/a-wptas/service-worker.js",
     "service-worker.js.map": "https://stevecassidy.github.io/a-wptas/service-worker.js.map",
     "static/css/2.48549584.chunk.css.map": "https://stevecassidy.github.io/a-wptas/static/css/2.48549584.chunk.css.map",
-    "static/css/main.dc8d41b5.chunk.css.map": "https://stevecassidy.github.io/a-wptas/static/css/main.dc8d41b5.chunk.css.map",
-    "static/js/2.cfbf7b12.chunk.js.LICENSE.txt": "https://stevecassidy.github.io/a-wptas/static/js/2.cfbf7b12.chunk.js.LICENSE.txt",
+    "static/css/main.75d246d8.chunk.css.map": "https://stevecassidy.github.io/a-wptas/static/css/main.75d246d8.chunk.css.map",
+    "static/js/2.26019e0a.chunk.js.LICENSE.txt": "https://stevecassidy.github.io/a-wptas/static/js/2.26019e0a.chunk.js.LICENSE.txt",
     "static/media/onsenui.css": "https://stevecassidy.github.io/a-wptas/static/media/ionicons.ef35f15c.woff",
     "static/media/bird.cfd081bf.png": "https://stevecassidy.github.io/a-wptas/static/media/bird.cfd081bf.png",
+    "static/media/clock.ae652609.png": "https://stevecassidy.github.io/a-wptas/static/media/clock.ae652609.png",
     "static/media/cup.56864a7c.png": "https://stevecassidy.github.io/a-wptas/static/media/cup.56864a7c.png",
-    "static/media/keys.6b0d9638.png": "https://stevecassidy.github.io/a-wptas/static/media/keys.6b0d9638.png"
+    "static/media/flower.fd7b0699.png": "https://stevecassidy.github.io/a-wptas/static/media/flower.fd7b0699.png",
+    "static/media/keys.6b0d9638.png": "https://stevecassidy.github.io/a-wptas/static/media/keys.6b0d9638.png",
+    "static/media/pen.80837576.png": "https://stevecassidy.github.io/a-wptas/static/media/pen.80837576.png",
+    "static/media/scissors.4f7c5598.png": "https://stevecassidy.github.io/a-wptas/static/media/scissors.4f7c5598.png",
+    "static/media/toothbrush.cd76ea4c.png": "https://stevecassidy.github.io/a-wptas/static/media/toothbrush.cd76ea4c.png"
   },
   "entrypoints": [
     "static/js/runtime-main.520d6281.js",
     "static/css/2.48549584.chunk.css",
-    "static/js/2.cfbf7b12.chunk.js",
-    "static/css/main.dc8d41b5.chunk.css",
-    "static/js/main.610fad61.chunk.js"
+    "static/js/2.26019e0a.chunk.js",
+    "static/css/main.75d246d8.chunk.css",
+    "static/js/main.7467d6fb.chunk.js"
   ]
 }
