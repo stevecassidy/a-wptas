@@ -20,20 +20,20 @@ const SetReminder = (props: RouteComponentProps) => {
 
             <p>Set a reminder for the image memory test.</p>
 
-        <Col width="50%">
-            <Row>
-                <Button onClick={() => setTimer(15)}>15 Minutes</Button>
-            </Row>
-            <Row>
-                <Button onClick={() => setTimer(30)}>30 Minutes</Button>
-            </Row>
-            <Row>
-                <Button onClick={() => setTimer(45)}>45 Minutes</Button>
-            </Row>
-            <Row>
-                <Button onClick={() => setTimer(60)}>1 hour</Button>
-            </Row>
-        </Col>
+            <Col className="reminder-actions">
+                <Row>
+                    <Button onClick={() => setTimer(15)}>15 Minutes</Button>
+                </Row>
+                <Row>
+                    <Button onClick={() => setTimer(30)}>30 Minutes</Button>
+                </Row>
+                <Row>
+                    <Button onClick={() => setTimer(45)}>45 Minutes</Button>
+                </Row>
+                <Row>
+                    <Button onClick={() => setTimer(60)}>1 hour</Button>
+                </Row>
+            </Col>
         </div>
     )
 }
