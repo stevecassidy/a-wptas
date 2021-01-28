@@ -14,7 +14,7 @@ jobs:
 
       - name: Install and Build
         env: 
-          PUBLIC_URL: https://stevecassidy.github.io/a-wptas/
+          PUBLIC_URL: /a-wptas
         run: |
           yarn install
           yarn run build
