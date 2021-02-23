@@ -15,6 +15,5 @@ const urls = {
     patientreport: r('patientreport'),
     setreminder: r('setreminder')
 };
-console.log(urls);
 
 export default urls;
