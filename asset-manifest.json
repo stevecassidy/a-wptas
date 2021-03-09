@@ -1,21 +1,21 @@
 {
   "files": {
     "main.css": "/a-wptas/static/css/main.75d246d8.chunk.css",
-    "main.js": "/a-wptas/static/js/main.72e3c619.chunk.js",
-    "main.js.map": "/a-wptas/static/js/main.72e3c619.chunk.js.map",
-    "runtime-main.js": "/a-wptas/static/js/runtime-main.b371774b.js",
-    "runtime-main.js.map": "/a-wptas/static/js/runtime-main.b371774b.js.map",
+    "main.js": "/a-wptas/static/js/main.2f9f603e.chunk.js",
+    "main.js.map": "/a-wptas/static/js/main.2f9f603e.chunk.js.map",
+    "runtime-main.js": "/a-wptas/static/js/runtime-main.3b6580c2.js",
+    "runtime-main.js.map": "/a-wptas/static/js/runtime-main.3b6580c2.js.map",
     "static/css/2.ed10f9e4.chunk.css": "/a-wptas/static/css/2.ed10f9e4.chunk.css",
-    "static/js/2.26019e0a.chunk.js": "/a-wptas/static/js/2.26019e0a.chunk.js",
-    "static/js/2.26019e0a.chunk.js.map": "/a-wptas/static/js/2.26019e0a.chunk.js.map",
-    "static/js/3.05520149.chunk.js": "/a-wptas/static/js/3.05520149.chunk.js",
-    "static/js/3.05520149.chunk.js.map": "/a-wptas/static/js/3.05520149.chunk.js.map",
+    "static/js/2.ac181158.chunk.js": "/a-wptas/static/js/2.ac181158.chunk.js",
+    "static/js/2.ac181158.chunk.js.map": "/a-wptas/static/js/2.ac181158.chunk.js.map",
+    "static/js/3.d143b803.chunk.js": "/a-wptas/static/js/3.d143b803.chunk.js",
+    "static/js/3.d143b803.chunk.js.map": "/a-wptas/static/js/3.d143b803.chunk.js.map",
     "index.html": "/a-wptas/index.html",
     "service-worker.js": "/a-wptas/service-worker.js",
     "service-worker.js.map": "/a-wptas/service-worker.js.map",
     "static/css/2.ed10f9e4.chunk.css.map": "/a-wptas/static/css/2.ed10f9e4.chunk.css.map",
     "static/css/main.75d246d8.chunk.css.map": "/a-wptas/static/css/main.75d246d8.chunk.css.map",
-    "static/js/2.26019e0a.chunk.js.LICENSE.txt": "/a-wptas/static/js/2.26019e0a.chunk.js.LICENSE.txt",
+    "static/js/2.ac181158.chunk.js.LICENSE.txt": "/a-wptas/static/js/2.ac181158.chunk.js.LICENSE.txt",
     "static/media/onsenui.css": "/a-wptas/static/media/ionicons.ef35f15c.woff",
     "static/media/bird.cfd081bf.png": "/a-wptas/static/media/bird.cfd081bf.png",
     "static/media/clock.ae652609.png": "/a-wptas/static/media/clock.ae652609.png",
@@ -27,10 +27,10 @@
     "static/media/toothbrush.cd76ea4c.png": "/a-wptas/static/media/toothbrush.cd76ea4c.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.b371774b.js",
+    "static/js/runtime-main.3b6580c2.js",
     "static/css/2.ed10f9e4.chunk.css",
-    "static/js/2.26019e0a.chunk.js",
+    "static/js/2.ac181158.chunk.js",
     "static/css/main.75d246d8.chunk.css",
-    "static/js/main.72e3c619.chunk.js"
+    "static/js/main.2f9f603e.chunk.js"
   ]
 }
