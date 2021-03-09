@@ -1,17 +1,20 @@
 
 import {Col, Row, Button} from 'react-onsenui';
 import {navigate, RouteComponentProps} from '@reach/router';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import {StateType, Patient} from '../../types'; 
 import * as actions from '../../redux/patients';
 import paths from '../../urls';
+
 
 
 const SetReminder = (props: RouteComponentProps) => {
 
     const dispatch = useDispatch();
-    
+    const patient: Patient = useSelector<StateType, Patient>(state => state.patients[state.currentPatient])
+
     const setTimer = (minutes: number) => {
-        dispatch(actions.setPatientTimer(minutes));
+        dispatch(actions.setPatientTimer(minutes, patient));
         navigate(paths.listpatients);
     }
 
@@ -21,6 +24,9 @@ const SetReminder = (props: RouteComponentProps) => {
             <p>Set a reminder for the image memory test.</p>
 
             <Col className="reminder-actions">
+                <Row>
+                    <Button onClick={() => setTimer(0.1)}>Short Test</Button>
+                </Row>
                 <Row>
                     <Button onClick={() => setTimer(15)}>15 Minutes</Button>
                 </Row>

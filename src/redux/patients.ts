@@ -1,4 +1,8 @@
 import {Patient, StateType, ActionType} from '../types'
+import { Plugins } from '@capacitor/core';
+import { navigate } from '@reach/router';
+import paths from '../urls';
+const { LocalNotifications } = Plugins;
 
 const ADD_PATIENT = 'ADD_PATIENT';
 const UPDATE_PATIENT = 'UPDATE_PATIENT';
@@ -35,10 +39,11 @@ export function setPatientPictureScore(nvalue: number) : ActionType {
     }
 }
 
-export function setPatientTimer(nvalue: number) : ActionType {
+export function setPatientTimer(nvalue: number, value: Patient) : ActionType {
     return {
         type: SET_PATIENT_TIMER,
-        nvalue
+        nvalue,
+        value
     }
 }
 
@@ -138,31 +143,56 @@ export default function reducer(state: StateType = initialState,
         break;
     case SET_PATIENT_TIMER:
         if (state.currentPatient >= 0) {
-            if (typeof(action.nvalue) === "number" ) {
-                let alarmTime = 0;
+            if (typeof(action.nvalue) === "number" && action.value !== undefined) {
+                let alarmTime : Date;
                 if (action.nvalue !== 0) {
-                    alarmTime = (new Date(Date.now() + action.nvalue * 60 * 1000)).getTime();
-                }
+                    alarmTime = (new Date(Date.now() + action.nvalue * 60 * 1000));
 
-                const updatedPatient = Object.assign(
-                    {},
-                    state.patients[state.currentPatient],
-                    {
-                        reminder: alarmTime
-                    }
-                );
-
-                newState = Object.assign(
-                    {},
-                    state,
-                    {
-                        patients: [
-                            ...state.patients.slice(0, state.currentPatient),
-                            updatedPatient,
-                            ...state.patients.slice(state.currentPatient+1)
+                    LocalNotifications.schedule({
+                        notifications: [
+                            {
+                                title: "Concussion Test Alarm",
+                                body: "Time to test image recall for " + action.value.name,
+                                id: state.currentPatient,
+                                schedule: { at: alarmTime },
+                                actionTypeId: "",
+                                extra: null
+                                 
+                            }
                         ]
-                    }
-                );
+                    })
+                    .then(() => {
+                        const handle = LocalNotifications.addListener('localNotificationActionPerformed', 
+                                 (action) => {
+                                    const patientId = action.notification.id;
+                                    selectPatient(patientId);
+                                    handle.remove();  // remove this listener
+                                    // set the view to patient report
+                                    navigate(paths.patientreport);
+                                }
+                            );
+                        });
+
+                    const updatedPatient = Object.assign(
+                        {},
+                        state.patients[state.currentPatient],
+                        {
+                            reminder: alarmTime
+                        }
+                    );
+
+                    newState = Object.assign(
+                        {},
+                        state,
+                        {
+                            patients: [
+                                ...state.patients.slice(0, state.currentPatient),
+                                updatedPatient,
+                                ...state.patients.slice(state.currentPatient+1)
+                            ]
+                        }
+                    );
+                }
             }
         }
         break;
