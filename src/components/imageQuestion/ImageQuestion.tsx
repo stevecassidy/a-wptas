@@ -70,7 +70,7 @@ const ImageQuestion = ({respond}: ImageQuestionProps) => {
                 <div id='image-question-text'>
                     <p>Remember these images:</p>
                 </div>
-            <div className='image-grid'>
+            <div className='image-strip'>
                 <ImageBlock label="cup" image={cup} />
                 <ImageBlock label="keys" image={keys} />
                 <ImageBlock label="bird" image={bird} />
