@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import {navigate, RouteComponentProps} from '@reach/router';
 import {useSelector} from 'react-redux';
 import {Button, Row, Col} from 'react-onsenui';
@@ -10,8 +11,18 @@ import './PatientReport.css';
 const PatientReport = (props: RouteComponentProps) => {
 
     const patient: Patient = useSelector<StateType, Patient>(state => state.patients[state.currentPatient])
+   
+    const [dummy, setDummy] = useState(0);
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setDummy(dummy + 1);  // just to force a render
+        }, 60000); 
+        return () => clearInterval(interval);
+    }, [dummy]);
 
-    let reminder = (patient.reminder - Date.now())/60000;
+
+    const rr = Date.parse(patient.reminder);
+    let reminder = (rr - Date.now())/60000;
     // if reminder is in the past, we just display 0h, 0m
     if (reminder < 0) {
         reminder = 0;
@@ -25,7 +36,7 @@ const PatientReport = (props: RouteComponentProps) => {
             </dl>
 
             <p>Time to recall test</p>
-            <div className="reminder">{(reminder/60).toFixed(0)}h {(reminder % 60).toFixed()}m</div>
+            <div className="reminder">{Math.floor(reminder/60)}h {(reminder % 60).toFixed()}m</div>
 
             <Col className="reminder-actions">
                 <Row><PatientStatus /></Row>

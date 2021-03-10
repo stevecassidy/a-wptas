@@ -168,6 +168,7 @@ export default function reducer(state: StateType = initialState,
                                     selectPatient(patientId);
                                     handle.remove();  // remove this listener
                                     // set the view to patient report
+                                    console.log("handling notification for patient", patientId);
                                     navigate(paths.patientreport);
                                 }
                             );

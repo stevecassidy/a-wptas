@@ -4,7 +4,7 @@ export interface Patient {
     location: string,
     questions: Array<boolean>,
     pictures: number,
-    reminder: number,
+    reminder: string,
 }
 
 export interface StateType {

@@ -18,7 +18,7 @@ const NewPatient = (props: RouteComponentProps) => {
         location: '',
         questions: [],
         pictures: 0,
-        reminder: 0
+        reminder: ''
     }
 
     const [patient, setPatient] = useState(newPatient)
