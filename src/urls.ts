@@ -13,7 +13,8 @@ const urls = {
     imagegrid: r('imagegrid'),
     listpatients: r('listpatients'),
     patientreport: r('patientreport'),
-    setreminder: r('setreminder')
+    setreminder: r('setreminder'),
+    help: r('help')
 };
 
 export default urls;

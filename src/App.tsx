@@ -16,7 +16,7 @@ import Questions from './components/question/Question';
 import PatientList from './components/patientList/PatientList';
 import PatientReport from './components/patientReport/PatientReport';
 import SetReminder from './components/setReminder/SetReminder';
-
+import Help from './components/help/Help';
 
 function App() {
 
@@ -30,7 +30,7 @@ function App() {
           A-WPTAS
         </div>
         <div className='right'>
-          &nbsp;
+          <Link to={paths.help}><Icon icon='question-circle' />&nbsp;</Link>
         </div>
       </Toolbar>
     }>
@@ -44,6 +44,7 @@ function App() {
         <PatientList path={paths.listpatients} />
         <PatientReport path={paths.patientreport} />
         <SetReminder path={paths.setreminder} />
+        <Help path={paths.help} />
       </Router>
       
     </Page>
