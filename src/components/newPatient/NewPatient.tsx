@@ -15,6 +15,7 @@ const NewPatient = (props: RouteComponentProps) => {
 
     const newPatient: Patient = {
         name: '',
+        date: new Date(Date.now()),
         location: '',
         questions: [],
         pictures: 0,

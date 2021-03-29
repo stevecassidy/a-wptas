@@ -1,6 +1,7 @@
 
 export interface Patient {
     name: string,
+    date: Date,
     location: string,
     questions: Array<boolean>,
     pictures: number,
