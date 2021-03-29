@@ -51,7 +51,7 @@ const ImageQuestion = ({respond}: ImageQuestionProps) => {
         return (
             <div className='image-question'>
                 <div id='image-question-text'>
-                    <p>Touch the images recalled correctly</p>
+                    <p>Touch the pictures correctly recalled by the patient</p>
                 </div>
             <div className='image-strip'>
                 <ImageBlock label="cup" image={cup} respond={respond} callback={callback}/>
@@ -68,7 +68,7 @@ const ImageQuestion = ({respond}: ImageQuestionProps) => {
         return (
             <div className='image-question'> 
                 <div id='image-question-text'>
-                    <p>Remember these images:</p>
+                    <p>I want you to remember these pictures for later recall:</p>
                 </div>
             <div className='image-strip'>
                 <ImageBlock label="cup" image={cup} />

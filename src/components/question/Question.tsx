@@ -40,11 +40,11 @@ const Questions = (props: RouteComponentProps) => {
   });
 
   const questions = [ 
-    {text: "What is your name?", hint: "Patient must provide thier full name."}, 
-    {text: "What is the name of this place?", hint: "Patient must be able to give the name of e.g. sports field"}, 
-    {text: "Why are you here?", hint: "Patient must know why they were admitted to hospital"}, 
+    {text: "What is your name?", hint: "Patient must provide their full name."}, 
+    {text: "What is the name of this place?", hint: "Patient must be able to give the name of e.g. specific hospital or sports field"}, 
+    {text: "Why are you here?", hint: "Patient must be able to describe the circumstances leading to the assessment."}, 
     {text: "What is the month?", hint: "Patient must name the month"}, 
-    {text: "What is the year?", hint: "Ok if the response is '21' or '2021'"}
+    {text: "What is the year?", hint: "Ok if the response is abbreviated, e.g. 21 for 2021"}
     ]
 
   let initialQuestions = Array<boolean>(5);

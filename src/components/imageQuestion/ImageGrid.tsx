@@ -45,7 +45,7 @@ const ImageGrid = (props: RouteComponentProps) => {
     return (
         <div className='image-question'>
             <div id='image-question-text'>
-                <p>Touch the images you remember</p>
+                <p>Touch the pictures you remember</p>
             </div>
             <div className='image-grid'>
                 <ImageBlock label="cup" image={cup} respond={true} callback={correct}/>

@@ -49,8 +49,8 @@ const PatientReport = (props: RouteComponentProps) => {
                 <Row><PatientStatus /></Row>
                 <Row><Button onClick={() => {navigate(paths.questions)}}>Update Answers</Button></Row>
                 <Row><Button onClick={() => {navigate(paths.setreminder)}}>Set Reminder</Button></Row>
-                <Row><Button onClick={() => {navigate(paths.imageresponse)}}>Image Recall</Button></Row>
-                <Row><Button onClick={() => {navigate(paths.imagegrid)}}>Image Grid</Button></Row>
+                <Row><Button onClick={() => {navigate(paths.imageresponse)}}>Picture Recall</Button></Row>
+                <Row><Button onClick={() => {navigate(paths.imagegrid)}}>Picture Grid</Button></Row>
             </Col>
         </div>
     )
