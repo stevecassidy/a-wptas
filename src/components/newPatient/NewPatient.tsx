@@ -44,8 +44,12 @@ const NewPatient = (props: RouteComponentProps) => {
                         onChange={(event: any) => { setPatient({...patient, location: event.target.value})} }
                         placeholder='Location' /> 
                 </div>
+
                 <div className='form-row'>
                     <Button onClick={onClick}>Next</Button>
+                </div>                
+                <div className='form-row' style={{textAlign: 'center'}}>
+                    Date and time are<br></br> automatically recorded.
                 </div>
         </div>
     )
