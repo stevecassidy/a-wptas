@@ -1,26 +1,26 @@
 .image-grid {
     display: grid;
-    grid-template-rows:  1fr 1fr 1fr;
-    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
     row-gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr;
     justify-content: center;
-    justify-items: center;
 }
 
 .image-strip {
     display: grid;
-    row-gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr;
     justify-content: center;
 }
 
 .image {
-    height: 175px;
-    width: 175px;
-    background-color: #1a1919;
+    height: 110px;
+    width: 110px;
+    margin: auto;
+    background-color: #000;
 }
 .image img {
-    height: 175px;
-    margin-left: 22px;
+    height: 100%;
+    margin-left: 13px; /* centers image in 110px div */
 }
 
 .image.selected {

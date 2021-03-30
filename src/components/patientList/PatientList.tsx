@@ -6,12 +6,29 @@ import {StateType, Patient} from '../../types';
 import * as actions from '../../redux/patients';
 import paths from '../../urls';
 import { useEffect, useState } from 'react';
+import moment from 'moment';
 
+import './PatientList.css';
 
 const PatientList = (props: RouteComponentProps) => {
 
     const dispatch = useDispatch();
-    const state: StateType = useSelector<StateType, StateType>(state => state)
+    const state: StateType = useSelector<StateType, StateType>(
+            state => {
+                const sortedState = Object.assign({}, state);
+                sortedState.patients.sort((a,b) => {
+                    const aR = new Date(a.reminder);
+                    const bR = new Date(b.reminder);
+                    if (aR > bR) {
+                        return -1;
+                    } else if (aR < bR) {
+                        return 1;
+                    } else {
+                        return 0;
+                    }
+                }) 
+                return sortedState;
+            });
 
     const [dummy, setDummy] = useState(0);
     useEffect(() => {
@@ -33,10 +50,17 @@ const PatientList = (props: RouteComponentProps) => {
         if (reminder < 0) {
             reminder = 0;
         }
+        let date = '';
+        if (row.date) {
+            date = moment( row.date ).format("DD/MM h:mmA");
+        }
 
         return (<ListItem key={idx} onClick={() => onClick(idx)}>
             <div className="left">{row.name}</div> 
-            <div className="center">{row.location}</div>
+            <div className="center">
+                <div className="list-item__title">{row.location}</div>                
+                <div className="list-item__subtitle">{date}</div>
+                </div>
             <div className="right">{Math.floor(reminder/60)}h {(reminder % 60).toFixed()}m</div>
             </ListItem>);
     }
@@ -45,7 +69,7 @@ const PatientList = (props: RouteComponentProps) => {
         <List
             dataSource={state.patients}
             renderRow={renderRow}>
-            </List>
+        </List>
     )
 
 }

@@ -33,10 +33,11 @@ function Home(props: RouteComponentProps) {
         </Card>
 
         <Card>
-        <p>Help text here.</p> 
-        <p>On emerging from coma, head-injured patients experience 
-            what is called post-traumatic amnesia (PTA). It represents a stage of 
-            recovery during which one's orientation and memory for ongoing events remains poor.</p>
+        <p>This app is intended for use by clinicians familiar with the 
+            Abbreviated-Westmead PTA Scale (A-WPTAS). When combined with a 
+            standardised GCS assessment it provides an objective measure of 
+            post-traumatic amnesia (PTA). 
+           </p> 
             <p><Button onClick={onClick} data-path={paths.help}>Find out more...</Button></p>
         </Card>
     </div>

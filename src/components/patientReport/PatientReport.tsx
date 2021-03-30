@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import {navigate, RouteComponentProps} from '@reach/router';
 import {useSelector} from 'react-redux';
 import {Button, Row, Col} from 'react-onsenui';
+import moment from 'moment';
 import {StateType, Patient} from '../../types'; 
 import PatientStatus from '../patientStatus/PatientStatus';
 import paths from '../../urls';
@@ -28,11 +29,17 @@ const PatientReport = (props: RouteComponentProps) => {
         reminder = 0;
     }
 
+    let date = 'unknown';
+    if (patient.date) {
+        date = moment( patient.date ).format("DD/MM/YY h:mmA");
+    }
+
     return (
         <div className='patient-report'>
             <dl>
                 <dt>Name</dt><dd>{patient.name}</dd>
                 <dt>Location</dt><dd>{patient.location}</dd>
+                <dt>Date</dt><dd>{date}</dd>
             </dl>
 
             <p>Time to recall test</p>
@@ -42,8 +49,8 @@ const PatientReport = (props: RouteComponentProps) => {
                 <Row><PatientStatus /></Row>
                 <Row><Button onClick={() => {navigate(paths.questions)}}>Update Answers</Button></Row>
                 <Row><Button onClick={() => {navigate(paths.setreminder)}}>Set Reminder</Button></Row>
-                <Row><Button onClick={() => {navigate(paths.imageresponse)}}>Image Recall</Button></Row>
-                <Row><Button onClick={() => {navigate(paths.imagegrid)}}>Image Grid</Button></Row>
+                <Row><Button onClick={() => {navigate(paths.imageresponse)}}>Picture Recall</Button></Row>
+                <Row><Button onClick={() => {navigate(paths.imagegrid)}}>Picture Grid</Button></Row>
             </Col>
         </div>
     )
