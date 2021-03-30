@@ -13,7 +13,22 @@ import './PatientList.css';
 const PatientList = (props: RouteComponentProps) => {
 
     const dispatch = useDispatch();
-    const state: StateType = useSelector<StateType, StateType>(state => state)
+    const state: StateType = useSelector<StateType, StateType>(
+            state => {
+                const sortedState = Object.assign({}, state);
+                sortedState.patients.sort((a,b) => {
+                    const aR = new Date(a.reminder);
+                    const bR = new Date(b.reminder);
+                    if (aR > bR) {
+                        return -1;
+                    } else if (aR < bR) {
+                        return 1;
+                    } else {
+                        return 0;
+                    }
+                }) 
+                return sortedState;
+            });
 
     const [dummy, setDummy] = useState(0);
     useEffect(() => {
