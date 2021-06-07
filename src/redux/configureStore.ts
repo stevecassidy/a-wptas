@@ -1,5 +1,6 @@
 import { createStore, applyMiddleware } from 'redux';
 import patientReducer from './patients';
+import { migrate } from './migrate';
 import {StateType} from '../types';
 
 const middlewares = [];
@@ -10,6 +11,8 @@ if (process.env.NODE_ENV === `development`) {
 }
 
 const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore); 
+
+migrate();
 
 // get saved content from localStorage
 let preloadedState: StateType;

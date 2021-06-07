@@ -11,14 +11,12 @@ import './NewPatient.css'
 const NewPatient = (props: RouteComponentProps) => {
 
     const dispatch = useDispatch();
-    //const patients = useSelector(state => state);
 
     const newPatient: Patient = {
         name: '',
         date: new Date(Date.now()),
         location: '',
-        questions: [],
-        pictures: 0,
+        tests: [],
         reminder: ''
     }
 

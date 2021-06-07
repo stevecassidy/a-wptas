@@ -4,7 +4,7 @@ import {Button, Row, Col} from 'react-onsenui';
 import BinaryChoice from '../binaryChoice/BinaryChoice';
 import PatientStatus from '../patientStatus/PatientStatus';
 import {useDispatch, useSelector} from 'react-redux';
-import {Patient, StateType} from '../../types';
+import {Patient, TestResult, StateType} from '../../types';
 import * as actions from '../../redux/patients';
 import paths from '../../urls';
 import './Question.css'
@@ -48,8 +48,9 @@ const Questions = (props: RouteComponentProps) => {
     ]
 
   let initialQuestions = Array<boolean>(5);
-  if (patient) {
-    initialQuestions = patient.questions;
+  if (patient.tests.length >= 1) {
+    // get the question responses from the most recent test
+    initialQuestions = patient.tests[-1].questions;
   }
 
   const [response, setResponse]= useState(initialQuestions)
@@ -72,8 +73,13 @@ const Questions = (props: RouteComponentProps) => {
   const answerQuestion = (answer: boolean) => {
     const newResponse = response.slice()
     newResponse[question] = answer;
-    setResponse(newResponse)
-    patient.questions = newResponse;
+    setResponse(newResponse);
+    const newTestResult: TestResult = {
+      date: new Date(),
+      questions: newResponse,
+      pictures: 0
+    }
+    patient.tests.push(newTestResult)
     dispatch(actions.updatePatient(patient));
   }
 

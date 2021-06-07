@@ -7,9 +7,12 @@ import configureStore from './redux/configureStore';
 import { Provider } from 'react-redux';
 import { Plugins } from '@capacitor/core';
 
+
 const {LocalNotifications} = Plugins;
 
 const store = configureStore();
+
+
 
 /* this gives many warnings...
  <React.StrictMode>

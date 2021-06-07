@@ -1,4 +1,4 @@
-import {Patient, StateType, ActionType} from '../types'
+import {Patient, TestResult, StateType, ActionType} from '../types'
 import { Plugins } from '@capacitor/core';
 import { navigate } from '@reach/router';
 import paths from '../urls';
@@ -6,6 +6,7 @@ const { LocalNotifications } = Plugins;
 
 const ADD_PATIENT = 'ADD_PATIENT';
 const UPDATE_PATIENT = 'UPDATE_PATIENT';
+const TEST_PATIENT = 'TEST_PATIENT';
 const SELECT_PATIENT = 'SELECT_PATIENT';
 const DELETE_PATIENT = 'DELETE_PATIENT';
 const SET_PATIENT_PICTURE_SCORE = 'SET_PATIENT_PICTURE_SCORE';
@@ -25,12 +26,20 @@ export function deletePatient(index: number) : ActionType {
   }
 }
 
-export function updatePatient(value: Patient) : ActionType {
+export function updatePatient(patient: Patient) : ActionType {
   return {
     type: UPDATE_PATIENT,
-    value
+    patient
   };
 }
+
+export function addTestForPatient(patient: Patient, test: TestResult) : ActionType {
+    return {
+      type: TEST_PATIENT,
+      patient,
+      test
+    };
+  }
 
 export function setPatientPictureScore(nvalue: number) : ActionType {
     return {
@@ -39,18 +48,18 @@ export function setPatientPictureScore(nvalue: number) : ActionType {
     }
 }
 
-export function setPatientTimer(nvalue: number, value: Patient) : ActionType {
+export function setPatientTimer(nvalue: number, patient: Patient) : ActionType {
     return {
         type: SET_PATIENT_TIMER,
         nvalue,
-        value
+        patient
     }
 }
 
-export function addPatient(value: Patient) : ActionType {
+export function addPatient(patient: Patient) : ActionType {
   return {
     type: ADD_PATIENT,
-    value
+    patient
   }
 }
 
@@ -72,7 +81,7 @@ export default function reducer(state: StateType = initialState,
                 {
                     patients: [
                         ...state.patients.slice(0, action.index),
-                        action.value,
+                        action.patient,
                         ...state.patients.slice(action.index+1)
                     ]
                 }
@@ -84,7 +93,7 @@ export default function reducer(state: StateType = initialState,
             {},
             state,
             {
-                patients: [...state.patients, action.value],
+                patients: [...state.patients, action.patient],
                 currentPatient: state.patients.length  // index of newly inserted element
             }
             );
@@ -143,7 +152,7 @@ export default function reducer(state: StateType = initialState,
         break;
     case SET_PATIENT_TIMER:
         if (state.currentPatient >= 0) {
-            if (typeof(action.nvalue) === "number" && action.value !== undefined) {
+            if (typeof(action.nvalue) === "number" && action.patient !== undefined) {
                 let alarmTime : Date;
                 if (action.nvalue !== 0) {
                     alarmTime = (new Date(Date.now() + action.nvalue * 60 * 1000));
@@ -152,7 +161,7 @@ export default function reducer(state: StateType = initialState,
                         notifications: [
                             {
                                 title: "Concussion Test Alarm",
-                                body: "Time to test image recall for " + action.value.name,
+                                body: "Time to test image recall for " + action.patient.name,
                                 id: state.currentPatient,
                                 schedule: { at: alarmTime },
                                 actionTypeId: "",
