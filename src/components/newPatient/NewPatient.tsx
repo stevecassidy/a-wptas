@@ -12,13 +12,7 @@ const NewPatient = (props: RouteComponentProps) => {
 
     const dispatch = useDispatch();
 
-    const newPatient: Patient = {
-        name: '',
-        date: new Date(Date.now()),
-        location: '',
-        tests: [],
-        reminder: ''
-    }
+    const newPatient = new Patient();
 
     const [patient, setPatient] = useState(newPatient)
 
@@ -27,19 +21,30 @@ const NewPatient = (props: RouteComponentProps) => {
         navigate(paths.questions)
     }
 
+    const updateName = (name: string) => {
+        const p = Object.assign({}, patient)
+        p.name = name;
+        setPatient(p);
+    }
+    const updateLocation = (loc: string) => {
+        const p = Object.assign({}, patient)
+        p.location = loc;
+        setPatient(p);
+    }
+
     return (
         <div className="new-patient-form">
                 <div className='form-row'>
                     <Input
                         value={patient.name} float
-                        onChange={(event: any) => { setPatient({...patient, name: event.target.value})} }
+                        onChange={(event: any) => { updateName(event.target.value)} }
                         placeholder='Patient Name' /> 
                 
                 </div>
                 <div className='form-row'>
                     <Input
                         value={patient.location} float
-                        onChange={(event: any) => { setPatient({...patient, location: event.target.value})} }
+                        onChange={(event: any) => { updateLocation(event.target.value)} }
                         placeholder='Location' /> 
                 </div>
 

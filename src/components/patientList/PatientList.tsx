@@ -6,7 +6,6 @@ import {StateType, Patient} from '../../types';
 import * as actions from '../../redux/patients';
 import paths from '../../urls';
 import { useEffect, useState } from 'react';
-import moment from 'moment';
 
 import './PatientList.css';
 
@@ -45,14 +44,18 @@ const PatientList = (props: RouteComponentProps) => {
         }  
     }
 
-    const renderRow = (row: Patient, idx?: number | undefined) => {
+    const renderRow = (row: any, idx?: number | undefined) => {
+
+        const patient = Object.assign(new Patient(), row);
+        patient.date = new Date(row.date);
+   
         let reminder = (Date.parse(row.reminder) - Date.now())/60000;
         if (reminder < 0) {
             reminder = 0;
         }
         let date = '';
-        if (row.date) {
-            date = moment( row.date ).format("DD/MM h:mmA");
+        if (patient.date) {
+            date = patient.date.toLocaleDateString('en-au', {day: '2-digit', month: '2-digit', hour: 'numeric', minute: 'numeric'})
         }
 
         return (<ListItem key={idx} onClick={() => onClick(idx)}>

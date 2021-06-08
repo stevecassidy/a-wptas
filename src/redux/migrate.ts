@@ -34,7 +34,7 @@ const migrations = [
                 const newPatients = patients.map((patient: any) => {
                     return {
                             name: patient.name,
-                            date: patient.date,
+                            date: patient.date ? patient.date : new Date().toISOString(),
                             location: patient.location,
                             reminder: patient.reminder,
                             tests: [{

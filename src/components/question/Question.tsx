@@ -1,10 +1,9 @@
 import { navigate, RouteComponentProps } from '@reach/router';
-import React, { useState } from 'react';
-import {Button, Row, Col} from 'react-onsenui';
+import { useState } from 'react';
+import { Button, Row, Col } from 'react-onsenui';
 import BinaryChoice from '../binaryChoice/BinaryChoice';
-import PatientStatus from '../patientStatus/PatientStatus';
-import {useDispatch, useSelector} from 'react-redux';
-import {Patient, TestResult, StateType} from '../../types';
+import { useDispatch, useSelector } from 'react-redux';
+import { Patient, StateType, TestResult } from '../../types';
 import * as actions from '../../redux/patients';
 import paths from '../../urls';
 import './Question.css'
@@ -27,7 +26,6 @@ const YesNoQuestion = ({question, answer, next, prev, value}: any) => {
           {prev?(<Col><Button  onClick={prev}>Prev</Button></Col>):(<Col />)}
           {next?(<Col><Button  onClick={next}>Next</Button></Col>):<Col />}
         </Row>
-        <PatientStatus />
       </div>
   );
 };
@@ -35,9 +33,7 @@ const YesNoQuestion = ({question, answer, next, prev, value}: any) => {
 const Questions = (props: RouteComponentProps) => {
 
   const dispatch = useDispatch()
-  const patient: Patient = useSelector((state: StateType) => {
-      return state.patients[state.currentPatient];
-  });
+  const patient: Patient = useSelector<StateType, Patient>(state => Object.assign(new Patient(), state.patients[state.currentPatient]))
 
   const questions = [ 
     {text: "What is your name?", hint: "Patient must provide their full name."}, 
@@ -46,20 +42,18 @@ const Questions = (props: RouteComponentProps) => {
     {text: "What is the month?", hint: "Patient must name the month"}, 
     {text: "What is the year?", hint: "Ok if the response is abbreviated, e.g. 21 for 2021"}
     ]
+  
+  const testResult = new TestResult();
 
-  let initialQuestions = Array<boolean>(5);
-  if (patient.tests.length >= 1) {
-    // get the question responses from the most recent test
-    initialQuestions = patient.tests[-1].questions;
-  }
-
-  const [response, setResponse]= useState(initialQuestions)
+  const [result, setResult] = useState(testResult)
   const [question, setQuestion] = useState(0)
 
   const next = () => {
     if (question + 1 < questions.length) {
       setQuestion(question + 1)
     } else {
+      patient.updateLastTest(result);
+      dispatch(actions.updatePatient(patient));
       navigate(paths.images);
     }
   }
@@ -71,22 +65,15 @@ const Questions = (props: RouteComponentProps) => {
   }
 
   const answerQuestion = (answer: boolean) => {
-    const newResponse = response.slice()
-    newResponse[question] = answer;
-    setResponse(newResponse);
-    const newTestResult: TestResult = {
-      date: new Date(),
-      questions: newResponse,
-      pictures: 0
-    }
-    patient.tests.push(newTestResult)
-    dispatch(actions.updatePatient(patient));
+    const newResult = Object.assign({}, result);
+    newResult.questions[question] = answer;
+    setResult(newResult); 
   }
 
   if (patient) {
     return (<YesNoQuestion answer={answerQuestion} 
                           question={questions[question]} 
-                          value={response[question]}
+                          value={result.questions[question]}
                           next={next} 
                           prev={(question > 0)?prev:0}/>)
     } else { 

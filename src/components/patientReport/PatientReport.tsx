@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import {navigate, RouteComponentProps} from '@reach/router';
 import {useSelector} from 'react-redux';
 import {Button, Row, Col} from 'react-onsenui';
-import moment from 'moment';
+import {format, formatDistanceToNow} from 'date-fns';
 import {StateType, Patient} from '../../types'; 
 import PatientStatus from '../patientStatus/PatientStatus';
 import paths from '../../urls';
@@ -11,7 +11,7 @@ import './PatientReport.css';
 
 const PatientReport = (props: RouteComponentProps) => {
 
-    const patient: Patient = useSelector<StateType, Patient>(state => state.patients[state.currentPatient])
+    const patient: Patient = useSelector<StateType, Patient>(state => Object.assign(new Patient(), state.patients[state.currentPatient]))
    
     const [dummy, setDummy] = useState(0);
     useEffect(() => {
@@ -31,7 +31,8 @@ const PatientReport = (props: RouteComponentProps) => {
 
     let date = 'unknown';
     if (patient.date) {
-        date = moment( patient.date ).format("DD/MM/YY h:mmA");
+        date = format(Date.parse(patient.date), "dd/MM hh:mm")
+        //patient.date.toLocaleDateString('en-au', {day: '2-digit', month: '2-digit', hour: 'numeric', minute: 'numeric'})
     }
 
     return (
@@ -47,7 +48,27 @@ const PatientReport = (props: RouteComponentProps) => {
 
             <Col className="reminder-actions">
                 <Row><PatientStatus /></Row>
-                <Row><Button onClick={() => {navigate(paths.questions)}}>Update Answers</Button></Row>
+                <Row>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Score</th>
+                                <th>Recall</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {patient.tests.map((tr) => {
+                                return (<tr key={tr.date}>
+                                            <td>{formatDistanceToNow(Date.parse(tr.date), {addSuffix: true})}</td>
+                                            <td>{tr.questions.filter(x => x?1:0).length}/5</td>
+                                            <td>{tr.pictures}/3</td>
+                                        </tr>)
+                            })}
+                        </tbody>
+                    </table>
+                </Row>
+                <Row><Button onClick={() => {navigate(paths.questions)}}>Re-test Patient</Button></Row>
                 <Row><Button onClick={() => {navigate(paths.setreminder)}}>Set Reminder</Button></Row>
                 <Row><Button onClick={() => {navigate(paths.imageresponse)}}>Picture Recall</Button></Row>
                 <Row><Button onClick={() => {navigate(paths.imagegrid)}}>Picture Grid</Button></Row>

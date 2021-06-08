@@ -129,13 +129,10 @@ export default function reducer(state: StateType = initialState,
         if (state.currentPatient >= 0) {
             if (typeof(action.nvalue) === "number" ) {
                 const updatedPatient = Object.assign(
-                    {},
-                    state.patients[state.currentPatient],
-                    {
-                        pictures: action.nvalue 
-                    }
+                    new Patient(),
+                    state.patients[state.currentPatient]
                 );
-
+                updatedPatient.lastTest().pictures = action.nvalue;
                 newState = Object.assign(
                     {},
                     state,
