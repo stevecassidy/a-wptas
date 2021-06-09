@@ -18,7 +18,7 @@ const NewPatient = (props: RouteComponentProps) => {
 
     const onClick = (event: any) => {
         dispatch(actions.addPatient(patient))
-        navigate(paths.questions)
+        navigate(paths.screening)
     }
 
     const updateName = (name: string) => {

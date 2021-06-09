@@ -12,6 +12,7 @@ import Home from './components/home/Home';
 import ImageQuestion from './components/imageQuestion/ImageQuestion';
 import ImageGrid from './components/imageQuestion/ImageGrid';
 import NewPatient from './components/newPatient/NewPatient';
+import ScreeningQ from './components/screeningQ/ScreeningQ';
 import Questions from './components/question/Question';
 import PatientList from './components/patientList/PatientList';
 import PatientReport from './components/patientReport/PatientReport';
@@ -37,6 +38,7 @@ function App() {
       <Router>
         <Home path={paths.home} />
         <NewPatient path={paths.newpatient} />
+        <ScreeningQ path={paths.screening} />
         <Questions path={paths.questions} />
         <ImageQuestion respond={false} path={paths.images} />
         <ImageQuestion respond={true} path={paths.imageresponse} />

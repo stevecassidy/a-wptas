@@ -64,7 +64,7 @@ const PatientList = (props: RouteComponentProps) => {
                 <div className="list-item__title">{row.location}</div>                
                 <div className="list-item__subtitle">{date}</div>
                 </div>
-            <div className="right">{Math.floor(reminder/60)}h {(reminder % 60).toFixed()}m</div>
+            <div className="right">{reminder ? (<span>{Math.floor(reminder/60)}h {(reminder % 60).toFixed()}m</span>) : ''}</div>
             </ListItem>);
     }
 

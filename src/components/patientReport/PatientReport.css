@@ -3,7 +3,7 @@
 }
 
 .reminder {
-    font-size: 50pt;
+    font-size: 30pt;
     text-align: center;
 }
 
@@ -18,10 +18,14 @@
 .reminder-actions ons-button {
     width: 100%;
 }
-
+.list {
+  width: 100%;
+}
 
 dl {
     padding: 0.5em;
+    padding-bottom: 0;
+    margin-bottom: 0;
   }
   dt {
     float: left;

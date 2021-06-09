@@ -71,6 +71,7 @@ const Questions = (props: RouteComponentProps) => {
   }
 
   if (patient) {
+
     return (<YesNoQuestion answer={answerQuestion} 
                           question={questions[question]} 
                           value={result.questions[question]}

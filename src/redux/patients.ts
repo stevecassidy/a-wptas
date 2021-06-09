@@ -74,18 +74,21 @@ export default function reducer(state: StateType = initialState,
     let newState: StateType = Object.assign({}, state);
     switch (action.type){
     case UPDATE_PATIENT:
-        if (typeof(action.index) === "number" && action.index >= 0 && action.index < state.patients.length) {
+        if (state.currentPatient >= 0 && state.currentPatient < state.patients.length) {
+            console.log("Updating Patient", state.currentPatient)
             newState =  Object.assign(
                 {},
                 state,
                 {
                     patients: [
-                        ...state.patients.slice(0, action.index),
+                        ...state.patients.slice(0, state.currentPatient),
                         action.patient,
-                        ...state.patients.slice(action.index+1)
+                        ...state.patients.slice(state.currentPatient+1)
                     ]
                 }
                 );
+            } else {
+                console.log("didn't update patient", state.currentPatient)
             }
             break; 
     case ADD_PATIENT:

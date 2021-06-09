@@ -2,6 +2,7 @@ export class Patient {
     name: string;
     date: string;
     location: string;
+    screened: boolean;
     tests: Array<TestResult>;
     reminder: string;
 
@@ -11,6 +12,7 @@ export class Patient {
         this.tests = [];
         this.location = '';
         this.name = '';
+        this.screened = false;
     }
 
     newTest(): TestResult {
