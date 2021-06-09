@@ -7,6 +7,7 @@ const r = (path: string) => BASE_URL + '/' + path;
 const urls = {
     home: r(''),
     newpatient: r('newpatient'),
+    screening: r('screening'),
     questions: r('questions'),
     images: r('images'),
     imageresponse: r('imageresponse'),

@@ -11,22 +11,25 @@ import './NewPatient.css'
 const NewPatient = (props: RouteComponentProps) => {
 
     const dispatch = useDispatch();
-    //const patients = useSelector(state => state);
 
-    const newPatient: Patient = {
-        name: '',
-        date: new Date(Date.now()),
-        location: '',
-        questions: [],
-        pictures: 0,
-        reminder: ''
-    }
+    const newPatient = new Patient();
 
     const [patient, setPatient] = useState(newPatient)
 
     const onClick = (event: any) => {
         dispatch(actions.addPatient(patient))
-        navigate(paths.questions)
+        navigate(paths.screening)
+    }
+
+    const updateName = (name: string) => {
+        const p = Object.assign({}, patient)
+        p.name = name;
+        setPatient(p);
+    }
+    const updateLocation = (loc: string) => {
+        const p = Object.assign({}, patient)
+        p.location = loc;
+        setPatient(p);
     }
 
     return (
@@ -34,14 +37,14 @@ const NewPatient = (props: RouteComponentProps) => {
                 <div className='form-row'>
                     <Input
                         value={patient.name} float
-                        onChange={(event: any) => { setPatient({...patient, name: event.target.value})} }
+                        onChange={(event: any) => { updateName(event.target.value)} }
                         placeholder='Patient Name' /> 
                 
                 </div>
                 <div className='form-row'>
                     <Input
                         value={patient.location} float
-                        onChange={(event: any) => { setPatient({...patient, location: event.target.value})} }
+                        onChange={(event: any) => { updateLocation(event.target.value)} }
                         placeholder='Location' /> 
                 </div>
 

@@ -18,7 +18,6 @@ const SetReminder = (props: RouteComponentProps) => {
     }
 
     const onTimerChange = (event: any) => {
-        console.log(event);
         setTimerValue(parseInt(event.target.value));
     }
 
@@ -41,13 +40,12 @@ const SetReminder = (props: RouteComponentProps) => {
                 <Row>
                     <Button onClick={() => setTimer(60)}>1 hour</Button>
                 </Row>
-                <Row><p>Or set any time below:</p></Row>
                 <Row>
-                    <Col>Time in Minutes:</Col>
-                    <Col><Input type="number" onChange={onTimerChange}/> </Col> 
+                    <Col>Or set any time:</Col>
+                    <Col><Input type="number" onChange={onTimerChange} placeholder="Time in Minutes"/></Col>
                 </Row>
                 <Row>
-                <Button onClick={() => setTimer(timerValue)}>Set</Button>
+                    <Button onClick={() => setTimer(timerValue)}>Set</Button>
                 </Row>
             </Col>
         </div>

@@ -14,10 +14,10 @@ describe('reducer', () => {
 it('should add a patient if I ask it to', () => {
     const samplePatient: Patient = {
         name: 'Steve',
+        date: new Date(),
         location: 'Epping',
-        questions: [0,1,1,0,1],
-        pictures: 3,
-        reminder: 330
+        tests: [{questions: [false, false, true, true, false], pictures: 0, date: new Date()}],
+        reminder: ''
     }
     const action = actions.addPatient(samplePatient)
     expect( reducer(undefined, action)).toEqual(

@@ -7,11 +7,12 @@ import './PatientStatus.css'
 
 const PatientStatus = (props: RouteComponentProps) => {
 
-    const patient: Patient = useSelector<StateType, Patient>(state => state.patients[state.currentPatient])
+    const patient: Patient = useSelector<StateType, Patient>(state => Object.assign(new Patient(), state.patients[state.currentPatient]))
+    const lastTest = patient.lastTest();
 
     return (
         <Row className="patient-status">
-            {patient.questions.map((q:boolean, idx: number) => {
+            {lastTest.questions.map((q:boolean, idx: number) => {
                 return (
                 <Col key={idx} className="patient-status-item">
                     <div className={`tick-cross ${q?"tick":"cross"}`}>
@@ -22,8 +23,8 @@ const PatientStatus = (props: RouteComponentProps) => {
             })}
             
             <Col>
-                <div className={`tick-cross ${patient.pictures===3?"tick":"cross"}`}>
-                    <div className="picture-score">{patient.pictures}</div>
+                <div className={`tick-cross ${lastTest.pictures===3?"tick":"cross"}`}>
+                    <div className="picture-score">{lastTest.pictures}</div>
                 </div>
             </Col>
         </Row>

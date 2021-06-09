@@ -5,14 +5,23 @@ import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import configureStore from './redux/configureStore';
 import { Provider } from 'react-redux';
+import { Plugins } from '@capacitor/core';
+
+
+const {LocalNotifications} = Plugins;
 
 const store = configureStore();
+
+
 
 /* this gives many warnings...
  <React.StrictMode>
     <App />
   </React.StrictMode>
 */
+
+/* ask to be allowed to make notifications */
+LocalNotifications.requestPermission().then((response) => console.log(response));
 
 ReactDOM.render(
   <Provider store={store}>
