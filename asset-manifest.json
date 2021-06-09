@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/a-wptas/static/css/main.21b02391.chunk.css",
-    "main.js": "/a-wptas/static/js/main.c7f136c2.chunk.js",
-    "main.js.map": "/a-wptas/static/js/main.c7f136c2.chunk.js.map",
-    "runtime-main.js": "/a-wptas/static/js/runtime-main.d0d39784.js",
-    "runtime-main.js.map": "/a-wptas/static/js/runtime-main.d0d39784.js.map",
+    "main.css": "/a-wptas/static/css/main.9ae98b5e.chunk.css",
+    "main.js": "/a-wptas/static/js/main.8e30c74d.chunk.js",
+    "main.js.map": "/a-wptas/static/js/main.8e30c74d.chunk.js.map",
+    "runtime-main.js": "/a-wptas/static/js/runtime-main.01ba6164.js",
+    "runtime-main.js.map": "/a-wptas/static/js/runtime-main.01ba6164.js.map",
     "static/css/2.ed10f9e4.chunk.css": "/a-wptas/static/css/2.ed10f9e4.chunk.css",
-    "static/js/2.e1b9b058.chunk.js": "/a-wptas/static/js/2.e1b9b058.chunk.js",
-    "static/js/2.e1b9b058.chunk.js.map": "/a-wptas/static/js/2.e1b9b058.chunk.js.map",
-    "static/js/3.a29ed683.chunk.js": "/a-wptas/static/js/3.a29ed683.chunk.js",
-    "static/js/3.a29ed683.chunk.js.map": "/a-wptas/static/js/3.a29ed683.chunk.js.map",
+    "static/js/2.eb793ee4.chunk.js": "/a-wptas/static/js/2.eb793ee4.chunk.js",
+    "static/js/2.eb793ee4.chunk.js.map": "/a-wptas/static/js/2.eb793ee4.chunk.js.map",
+    "static/js/3.04c4ac65.chunk.js": "/a-wptas/static/js/3.04c4ac65.chunk.js",
+    "static/js/3.04c4ac65.chunk.js.map": "/a-wptas/static/js/3.04c4ac65.chunk.js.map",
     "index.html": "/a-wptas/index.html",
     "service-worker.js": "/a-wptas/service-worker.js",
     "service-worker.js.map": "/a-wptas/service-worker.js.map",
     "static/css/2.ed10f9e4.chunk.css.map": "/a-wptas/static/css/2.ed10f9e4.chunk.css.map",
-    "static/css/main.21b02391.chunk.css.map": "/a-wptas/static/css/main.21b02391.chunk.css.map",
-    "static/js/2.e1b9b058.chunk.js.LICENSE.txt": "/a-wptas/static/js/2.e1b9b058.chunk.js.LICENSE.txt",
+    "static/css/main.9ae98b5e.chunk.css.map": "/a-wptas/static/css/main.9ae98b5e.chunk.css.map",
+    "static/js/2.eb793ee4.chunk.js.LICENSE.txt": "/a-wptas/static/js/2.eb793ee4.chunk.js.LICENSE.txt",
     "static/media/onsenui.css": "/a-wptas/static/media/ionicons.ef35f15c.woff",
     "static/media/bird.a9626b2f.png": "/a-wptas/static/media/bird.a9626b2f.png",
     "static/media/clock.7e78c6fb.png": "/a-wptas/static/media/clock.7e78c6fb.png",
@@ -27,10 +27,10 @@
     "static/media/toothbrush.9bcb0930.png": "/a-wptas/static/media/toothbrush.9bcb0930.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.d0d39784.js",
+    "static/js/runtime-main.01ba6164.js",
     "static/css/2.ed10f9e4.chunk.css",
-    "static/js/2.e1b9b058.chunk.js",
-    "static/css/main.21b02391.chunk.css",
-    "static/js/main.c7f136c2.chunk.js"
+    "static/js/2.eb793ee4.chunk.js",
+    "static/css/main.9ae98b5e.chunk.css",
+    "static/js/main.8e30c74d.chunk.js"
   ]
 }
