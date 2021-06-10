@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/a-wptas/static/css/main.9ae98b5e.chunk.css",
-    "main.js": "/a-wptas/static/js/main.8e30c74d.chunk.js",
-    "main.js.map": "/a-wptas/static/js/main.8e30c74d.chunk.js.map",
+    "main.css": "/a-wptas/static/css/main.3c0df3fb.chunk.css",
+    "main.js": "/a-wptas/static/js/main.35f8d403.chunk.js",
+    "main.js.map": "/a-wptas/static/js/main.35f8d403.chunk.js.map",
     "runtime-main.js": "/a-wptas/static/js/runtime-main.01ba6164.js",
     "runtime-main.js.map": "/a-wptas/static/js/runtime-main.01ba6164.js.map",
     "static/css/2.ed10f9e4.chunk.css": "/a-wptas/static/css/2.ed10f9e4.chunk.css",
@@ -14,7 +14,7 @@
     "service-worker.js": "/a-wptas/service-worker.js",
     "service-worker.js.map": "/a-wptas/service-worker.js.map",
     "static/css/2.ed10f9e4.chunk.css.map": "/a-wptas/static/css/2.ed10f9e4.chunk.css.map",
-    "static/css/main.9ae98b5e.chunk.css.map": "/a-wptas/static/css/main.9ae98b5e.chunk.css.map",
+    "static/css/main.3c0df3fb.chunk.css.map": "/a-wptas/static/css/main.3c0df3fb.chunk.css.map",
     "static/js/2.eb793ee4.chunk.js.LICENSE.txt": "/a-wptas/static/js/2.eb793ee4.chunk.js.LICENSE.txt",
     "static/media/onsenui.css": "/a-wptas/static/media/ionicons.ef35f15c.woff",
     "static/media/bird.a9626b2f.png": "/a-wptas/static/media/bird.a9626b2f.png",
@@ -30,7 +30,7 @@
     "static/js/runtime-main.01ba6164.js",
     "static/css/2.ed10f9e4.chunk.css",
     "static/js/2.eb793ee4.chunk.js",
-    "static/css/main.9ae98b5e.chunk.css",
-    "static/js/main.8e30c74d.chunk.js"
+    "static/css/main.3c0df3fb.chunk.css",
+    "static/js/main.35f8d403.chunk.js"
   ]
 }
