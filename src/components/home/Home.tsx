@@ -1,6 +1,6 @@
 import React from 'react';
 import { RouteComponentProps, navigate} from "@reach/router"
-import {Button, Card} from 'react-onsenui';
+import {Button, Card, Col, Row} from 'react-onsenui';
 import paths from '../../urls';
 import './Home.css';
 
@@ -31,12 +31,20 @@ function Home(props: RouteComponentProps) {
             <p>Review results from previous patients.</p>
             </div>
         </Card>
-
+        <Card>
+        <div className='title'>
+            <Col className="grid-buttons">
+                <Row><Button className="space-below" onClick={() => {navigate(paths.imagesquick)}}>Picture Recall</Button></Row>
+                <Row><Button onClick={() => {navigate(paths.imagegridquick)}}>Picture Grid</Button></Row>
+            </Col>
+            </div>
+            <div className='content'>
+                <p>Shortcuts for quick access to pictures.</p>
+            </div>
+        </Card>
         <Card>
         <p>This app is intended for use by clinicians familiar with the 
-            Abbreviated-Westmead PTA Scale (A-WPTAS). When combined with a 
-            standardised GCS assessment it provides an objective measure of 
-            post-traumatic amnesia (PTA). 
+            Abbreviated-Westmead PTA Scale (A-WPTAS).  
            </p> 
             <p><Button onClick={onClick} data-path={paths.help}>Find out more...</Button></p>
         </Card>

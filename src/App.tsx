@@ -41,8 +41,10 @@ function App() {
         <ScreeningQ path={paths.screening} />
         <Questions path={paths.questions} />
         <ImageQuestion respond={false} path={paths.images} />
+        <ImageQuestion respond={false} gohome={true} path={paths.imagesquick} />
         <ImageQuestion respond={true} path={paths.imageresponse} />
-        <ImageGrid path={paths.imagegrid} />
+        <ImageGrid respond={true} path={paths.imagegrid} />
+        <ImageGrid respond={false} path={paths.imagegridquick} />
         <PatientList path={paths.listpatients} />
         <PatientReport path={paths.patientreport} />
         <SetReminder path={paths.setreminder} />

@@ -13,23 +13,28 @@ import * as actions from '../../redux/patients';
 import ImageBlock from './ImageBlock';
 
 interface ImageQuestionProps extends RouteComponentProps {
-    respond: boolean
+    respond: boolean,
+    gohome?: boolean
 }
 
-const ImageQuestion = ({respond}: ImageQuestionProps) => {
+const ImageQuestion = ({respond, gohome}: ImageQuestionProps) => {
 
     const dispatch = useDispatch();
     const [score, setScore] = useState(0);
 
     const next = () => {
         if (!respond) {
-            //navigate(paths.imageresponse);
-            navigate(paths.setreminder);
+            if (gohome) {
+                navigate(paths.home);
+            } else {
+                navigate(paths.setreminder);
+            }
         } else {
             dispatch(actions.setPatientPictureScore(score));
             navigate(paths.patientreport)
         }
     }
+    
     const prev = () => {
         if (respond) {
             navigate(paths.images);
@@ -58,10 +63,10 @@ const ImageQuestion = ({respond}: ImageQuestionProps) => {
                 <ImageBlock label="keys" image={keys} respond={respond} callback={callback}/>
                 <ImageBlock label="bird" image={bird} respond={respond} callback={callback}/>
             </div>
-            <Row >
-                <Col><Button  onClick={prev}>Prev</Button></Col>
-                <Col><Button  onClick={next}>Next</Button></Col>
-            </Row>
+                <Row >
+                    <Col><Button  onClick={prev}>Prev</Button></Col>
+                    <Col><Button  onClick={next}>Next</Button></Col>
+                </Row>
             </div>
         )
     } else {
@@ -75,10 +80,12 @@ const ImageQuestion = ({respond}: ImageQuestionProps) => {
                 <ImageBlock label="keys" image={keys} />
                 <ImageBlock label="bird" image={bird} />
             </div>
+            {gohome ? (<Row><Button onClick={next}>Done</Button></Row>) : (
             <Row >
                 <Col><Button  onClick={prev}>Prev</Button></Col>
                 <Col><Button  onClick={next}>Next</Button></Col>
             </Row>
+            )}
             </div>
         )
     }
