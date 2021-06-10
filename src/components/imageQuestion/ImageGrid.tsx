@@ -18,15 +18,22 @@ import ImageBlock from './ImageBlock';
 import {useDispatch} from 'react-redux';
 import * as actions from '../../redux/patients';
 
+interface ImageGridProps extends RouteComponentProps {
+    respond: boolean
+}
 
-const ImageGrid = (props: RouteComponentProps) => {
+const ImageGrid = ({respond}: ImageGridProps) => {
 
     const dispatch = useDispatch();
     const [score, setScore] = useState(0);
 
     const done = () => {
+        if (respond) {
             dispatch(actions.setPatientPictureScore(score));
-            navigate(paths.patientreport)
+            navigate(paths.patientreport);
+        } else {
+            navigate(paths.home);
+        }
     }
 
     const correct = (state: boolean) => {
