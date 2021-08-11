@@ -10,7 +10,7 @@ const Help = (props: RouteComponentProps) => {
             Abbreviated-Westmead PTA Scale (A-WPTAS). When combined with a 
             standardised GCS assessment it provides an objective measure of 
             post-traumatic amnesia (PTA). The full administration and scoring 
-            instructions are here             
+            instructions are here&nbsp;          
             <a target='new' href="https://www.mq.edu.au/about/about-the-university/faculties-and-departments/medicine-and-health-sciences/departments-and-centres/department-of-psychology/glasgow-coma-scale-gcs-and-abbreviated-westmead-pta-scale-a-wptas">A-WPTAS Administration</a>
 
             <p>This app allows you to record the responses of individual patients

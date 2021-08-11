@@ -10,7 +10,8 @@
     },
     "LocalNotifications": {
       "smallIcon": "concussionlogo",
-      "iconColor": "#488AFF"
+      "iconColor": "#488AFF",
+      "sound": "beep.wav"
     }
   },
   "cordova": {}

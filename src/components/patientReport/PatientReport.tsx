@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {navigate, RouteComponentProps} from '@reach/router';
 import {useSelector} from 'react-redux';
 import {Button, Row, Col, List, ListItem, ListTitle} from 'react-onsenui';
@@ -33,8 +33,9 @@ const PatientReport = (props: RouteComponentProps) => {
         date = format(Date.parse(patient.date), "dd/MM hh:mm")
     }
 
+    const lastTest = patient.lastTest();
     // we want to display the tests in reverse order
-    const tests = patient.tests.slice()
+    const tests = patient.tests.slice();
     tests.reverse();
 
     return (
@@ -65,10 +66,21 @@ const PatientReport = (props: RouteComponentProps) => {
                             })} 
                     </List>
                 </Row>
-                <Row><Button onClick={() => {navigate(paths.screening)}}>Re-test Patient</Button></Row>
-                <Row><Button onClick={() => {navigate(paths.setreminder)}}>Set Reminder</Button></Row>
-                <Row><Button onClick={() => {navigate(paths.imageresponse)}}>Picture Recall</Button></Row>
-                <Row><Button onClick={() => {navigate(paths.imagegrid)}}>Picture Grid</Button></Row>
+                {
+                    lastTest.questions.filter(x => x?1:0).length < 5 ?
+                    (
+                        <Row><Button onClick={() => {navigate(paths.screening)}}>Re-test Patient</Button></Row>
+                    ) : ("")
+                }
+                {
+                   lastTest.pictures < 3 ? 
+                        (   <React.Fragment>         
+                                <Row><Button onClick={() => {navigate(paths.setreminder)}}>Set Reminder</Button></Row>
+                                <Row><Button onClick={() => {navigate(paths.imageresponse)}}>Picture Recall</Button></Row>                        
+                                <Row><Button onClick={() => {navigate(paths.imagegrid)}}>Picture Grid</Button></Row>
+                            </React.Fragment>   
+                        ) : ("")
+                }
             </Col>
         </div>
     )

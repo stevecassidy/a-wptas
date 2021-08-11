@@ -4,6 +4,7 @@ import { navigate } from '@reach/router';
 import paths from '../urls';
 const { LocalNotifications } = Plugins;
 
+
 const ADD_PATIENT = 'ADD_PATIENT';
 const UPDATE_PATIENT = 'UPDATE_PATIENT';
 const TEST_PATIENT = 'TEST_PATIENT';
@@ -182,7 +183,7 @@ export default function reducer(state: StateType = initialState,
                                 }
                             );
                         });
-
+  
                     const updatedPatient = Object.assign(
                         {},
                         state.patients[state.currentPatient],
