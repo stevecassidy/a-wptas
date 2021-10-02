@@ -19,7 +19,7 @@ const BinaryChoice = ({callback, value}: any) => {
       <div>   
         <div className="binaryChoiceContainer">
           <div className={"binary-choice-button yes-button " + yesclass} onClick={() => onClick(true)}>
-            <Icon size={{default: 120}} icon='check' />
+            <Icon size={{default: 110}} icon='check' />
           </div>
           <div className={"binary-choice-button no-button " + noclass} onClick={() => onClick(false)}>
             <Icon size={{default: 120}} icon='close' />

@@ -1,22 +1,22 @@
 .binaryChoiceContainer {
     display: grid;
-    grid-template-rows: 180px 180px;
-    row-gap: 10px;
+    grid-template-rows: 50vw 50vw;
+    row-gap: 2vh;
     margin: auto;
-    margin-bottom: 15px;
+    margin-bottom: 4vw;
 }
 
 .binary-choice-button {
-    width: 180px;
-    height: 180px; 
+    width: 45vw;
+    height: 45vw; 
     justify-self: center;
     text-align: center;
     color: white;
     background-color: grey;
 }
 .binary-choice-button ons-icon {
-    margin-top: 25px;
-    height: 180px;
+    margin-top: 5vw;
+    height: 45vw;
     color: white; 
 }
 .binaryChoiceContainer  {
