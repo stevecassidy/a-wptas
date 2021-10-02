@@ -173,7 +173,7 @@ export default function reducer(state: StateType = initialState,
                     })
                     .then(() => {
                         const handle = LocalNotifications.addListener('localNotificationActionPerformed', 
-                                 (action) => {
+                                 (action: { notification: { id: any; }; }) => {
                                     const patientId = action.notification.id;
                                     selectPatient(patientId);
                                     handle.remove();  // remove this listener

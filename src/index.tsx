@@ -4,11 +4,8 @@ import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import configureStore from './redux/configureStore';
-import { Provider } from 'react-redux';
-import { Plugins } from '@capacitor/core';
-
-
-const {LocalNotifications} = Plugins;
+import { Provider } from 'react-redux'; 
+import {LocalNotifications} from '@capacitor/local-notifications';
 
 const store = configureStore();
 
@@ -21,7 +18,7 @@ const store = configureStore();
 */
 
 /* ask to be allowed to make notifications */
-LocalNotifications.requestPermission().then((response) => console.log(response));
+LocalNotifications.requestPermissions().then((response: any) => console.log(response));
 
 ReactDOM.render(
   <Provider store={store}>
