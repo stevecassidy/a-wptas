@@ -60,8 +60,8 @@ const PatientReport = (props: RouteComponentProps) => {
                                 return (<ListItem key={tr.date}>
                                             <div className="list-item__title">{formatDistanceToNow(Date.parse(tr.date), {addSuffix: true})}</div>
                                             <div className="list-item__subtitle">Score:&nbsp; 
-                                            {tr.questions.filter(x => x?1:0).length}/5&nbsp;
-                                            {tr.pictures}/3</div>
+                                            {tr.questions.filter(x => x?1:0).length}/5 questions;&nbsp; 
+                                            {tr.pictures}/3 pictures</div>
                                         </ListItem>)
                             })} 
                     </List>
