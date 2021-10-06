@@ -17,7 +17,6 @@ function ScreeningQ(props: RouteComponentProps) {
         event.preventDefault();   
         // set the current patient screening status
         patient.screened = true;
-        console.log(patient);
         dispatch(actions.updatePatient(patient));
         navigate(paths.questions);
     };

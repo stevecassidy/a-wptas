@@ -34,14 +34,6 @@ export function updatePatient(patient: Patient) : ActionType {
   };
 }
 
-export function addTestForPatient(patient: Patient, test: TestResult) : ActionType {
-    return {
-      type: TEST_PATIENT,
-      patient,
-      test
-    };
-  }
-
 export function setPatientPictureScore(nvalue: number) : ActionType {
     return {
         type: SET_PATIENT_PICTURE_SCORE,
@@ -76,7 +68,6 @@ export default function reducer(state: StateType = initialState,
     switch (action.type){
     case UPDATE_PATIENT:
         if (state.currentPatient >= 0 && state.currentPatient < state.patients.length) {
-            console.log("Updating Patient", state.currentPatient)
             newState =  Object.assign(
                 {},
                 state,
@@ -136,7 +127,18 @@ export default function reducer(state: StateType = initialState,
                     new Patient(),
                     state.patients[state.currentPatient]
                 );
-                updatedPatient.lastTest().pictures = action.nvalue;
+
+                // if last test didn't have a picture score add it
+                // otherwise we make a new test, copying the last one
+                // and update the picture score in that
+                if (updatedPatient.lastTest().pictures !== 0) {
+                    const newTestResult = Object.assign({}, updatedPatient.lastTest());
+                    newTestResult.pictures = action.nvalue;
+                    newTestResult.date = new Date().toISOString();
+                    updatedPatient.updateLastTest(newTestResult);
+                } else {
+                    updatedPatient.lastTest().pictures = action.nvalue;
+                }
                 newState = Object.assign(
                     {},
                     state,

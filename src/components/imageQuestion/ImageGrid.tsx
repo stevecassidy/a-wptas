@@ -26,6 +26,7 @@ const ImageGrid = ({respond}: ImageGridProps) => {
 
     const dispatch = useDispatch();
     const [score, setScore] = useState(0);
+    const [responses, setResponses] = useState(0);
 
     const done = () => {
         if (respond) {
@@ -36,7 +37,13 @@ const ImageGrid = ({respond}: ImageGridProps) => {
         }
     }
 
+    const checkActive = (state: boolean) => {
+        setResponses(responses + (state ? 1 : -1))
+    }
+
     const correct = (state: boolean) => {
+        checkActive(state)
+
         if (state) {
             setScore(Math.min(3, score+1))
         } else {
@@ -45,9 +52,11 @@ const ImageGrid = ({respond}: ImageGridProps) => {
     }
 
     const incorrect = (state: boolean) => {
-        // don't count incorrect responses
+        checkActive(state)
     }
 
+    // active 
+    const active = respond && responses < 3;
 
     return (
         <div className='image-question'>
@@ -55,15 +64,15 @@ const ImageGrid = ({respond}: ImageGridProps) => {
                 <p>Touch the pictures you remember</p>
             </div>
             <div className='image-grid'>
-                <ImageBlock label="cup" image={cup} respond={true} callback={correct}/>
-                <ImageBlock label="clock" image={clock} respond={true} callback={incorrect}/>
-                <ImageBlock label="flower" image={flower} respond={true} callback={incorrect}/>
-                <ImageBlock label="fork" image={fork} respond={true} callback={incorrect}/>
-                <ImageBlock label="keys" image={keys} respond={true} callback={correct}/>
-                <ImageBlock label="toothbrush" image={toothbrush} respond={true} callback={incorrect}/>
-                <ImageBlock label="bird" image={bird} respond={true} callback={correct}/>
-                <ImageBlock label="pen" image={pen} respond={true} callback={incorrect}/>
-                <ImageBlock label="scissors" image={scissors} respond={true} callback={incorrect}/>
+                <ImageBlock label="cup" image={cup} respond={active} callback={correct} selectedClass='correct'/>
+                <ImageBlock label="clock" image={clock} respond={active} callback={incorrect} selectedClass='incorrect'/>
+                <ImageBlock label="flower" image={flower} respond={active} callback={incorrect} selectedClass='incorrect'/>
+                <ImageBlock label="fork" image={fork} respond={active} callback={incorrect} selectedClass='incorrect'/>
+                <ImageBlock label="keys" image={keys} respond={active} callback={correct} selectedClass='correct'/>
+                <ImageBlock label="toothbrush" image={toothbrush} respond={active} callback={incorrect} selectedClass='incorrect'/>
+                <ImageBlock label="bird" image={bird} respond={active} callback={correct} selectedClass='correct'/>
+                <ImageBlock label="pen" image={pen} respond={active} callback={incorrect} selectedClass='incorrect'/>
+                <ImageBlock label="scissors" image={scissors} respond={active} callback={incorrect} selectedClass='incorrect'/>
             </div>
             <Row>
                 <Col><Button id="done-button" onClick={done}>Done</Button></Col> 

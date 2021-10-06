@@ -59,9 +59,9 @@ const ImageQuestion = ({respond, gohome}: ImageQuestionProps) => {
                     <p>Touch the pictures correctly recalled by the patient</p>
                 </div>
             <div className='image-strip'>
-                <ImageBlock label="cup" image={cup} respond={respond} callback={callback}/>
-                <ImageBlock label="keys" image={keys} respond={respond} callback={callback}/>
-                <ImageBlock label="bird" image={bird} respond={respond} callback={callback}/>
+                <ImageBlock label="cup" image={cup} respond={respond} callback={callback} selectedClass='correct'/>
+                <ImageBlock label="keys" image={keys} respond={respond} callback={callback} selectedClass='correct'/>
+                <ImageBlock label="bird" image={bird} respond={respond} callback={callback} selectedClass='correct'/>
             </div>
                 <Row >
                     <Col><Button  onClick={prev}>Prev</Button></Col>

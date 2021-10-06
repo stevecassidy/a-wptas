@@ -2,7 +2,7 @@
 import {useState} from 'react';   
 
 
-const ImageBlock = ({label, image, respond, callback}: any) => {
+const ImageBlock = ({label, image, respond, callback, selectedClass}: any) => {
 
     const [selected, setSelected] = useState(false);
 
@@ -15,7 +15,7 @@ const ImageBlock = ({label, image, respond, callback}: any) => {
 
     let className = 'image';
     if (selected) {
-        className += ' selected';
+        className += ' ' + selectedClass; 
     }
 
     return (                

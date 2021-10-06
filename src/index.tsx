@@ -18,7 +18,7 @@ const store = configureStore();
 */
 
 /* ask to be allowed to make notifications */
-LocalNotifications.requestPermissions().then((response: any) => console.log(response));
+LocalNotifications.requestPermissions();
 
 ReactDOM.render(
   <Provider store={store}>
