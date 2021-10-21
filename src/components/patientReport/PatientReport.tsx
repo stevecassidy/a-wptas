@@ -57,7 +57,7 @@ const PatientReport = (props: RouteComponentProps) => {
                     <List>
                             {
                             tests.map((tr) => {
-                                return (<ListItem key={tr.date}>
+                                return (<ListItem key={`${tr.date}-${tr.pictures}-${tr.questions[0]}`}>
                                             <div className="list-item__title">{formatDistanceToNow(Date.parse(tr.date), {addSuffix: true})}</div>
                                             <div className="list-item__subtitle">Score:&nbsp; 
                                             {tr.questions.filter(x => x?1:0).length}/5 questions;&nbsp; 
@@ -67,19 +67,16 @@ const PatientReport = (props: RouteComponentProps) => {
                     </List>
                 </Row>
                 {
-                    lastTest.questions.filter(x => x?1:0).length < 5 ?
+                    // don't show retest actions if perfect score
+                    (lastTest.questions.filter(x => x?1:0).length < 5)  || (lastTest.pictures < 3)?
                     (
-                        <Row><Button onClick={() => {navigate(paths.screening)}}>Re-test Patient</Button></Row>
+                        <React.Fragment>
+                            <Row><Button onClick={() => {navigate(paths.screening)}}>Re-test Patient</Button></Row>      
+                            <Row><Button onClick={() => {navigate(paths.setreminder)}}>Set Reminder</Button></Row>
+                            <Row><Button onClick={() => {navigate(paths.imageresponse)}}>Picture Recall</Button></Row>                        
+                            <Row><Button onClick={() => {navigate(paths.imagegrid)}}>Picture Grid</Button></Row>
+                        </React.Fragment>   
                     ) : ("")
-                }
-                {
-                   lastTest.pictures < 3 ? 
-                        (   <React.Fragment>         
-                                <Row><Button onClick={() => {navigate(paths.setreminder)}}>Set Reminder</Button></Row>
-                                <Row><Button onClick={() => {navigate(paths.imageresponse)}}>Picture Recall</Button></Row>                        
-                                <Row><Button onClick={() => {navigate(paths.imagegrid)}}>Picture Grid</Button></Row>
-                            </React.Fragment>   
-                        ) : ("")
                 }
             </Col>
         </div>
