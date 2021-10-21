@@ -1,13 +1,11 @@
-import {Patient, TestResult, StateType, ActionType} from '../types'
-import { Plugins } from '@capacitor/core';
+import {Patient, StateType, ActionType} from '../types'
+import { LocalNotifications } from '@capacitor/local-notifications';
 import { navigate } from '@reach/router';
 import paths from '../urls';
-const { LocalNotifications } = Plugins;
 
 
 const ADD_PATIENT = 'ADD_PATIENT';
 const UPDATE_PATIENT = 'UPDATE_PATIENT';
-const TEST_PATIENT = 'TEST_PATIENT';
 const SELECT_PATIENT = 'SELECT_PATIENT';
 const DELETE_PATIENT = 'DELETE_PATIENT';
 const SET_PATIENT_PICTURE_SCORE = 'SET_PATIENT_PICTURE_SCORE';
@@ -88,7 +86,7 @@ export default function reducer(state: StateType = initialState,
             {},
             state,
             {
-                patients: [...state.patients, action.patient],
+                patients: [action.patient, ...state.patients],
                 currentPatient: state.patients.length  // index of newly inserted element
             }
             );
